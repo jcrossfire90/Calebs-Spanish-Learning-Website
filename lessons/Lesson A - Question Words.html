@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Lesson A - Question Words</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<nav class="lesson-nav">
+<a href="../index.html">🏠 Home</a>
+<a href="Lesson A - Animals.html">← Lesson A: Animals</a>
+<a href="Lesson A - Prepositions.html">Lesson A: Prepositions →</a>
+</nav>
+
+<header>
+
+<h1>Lesson A: Interrogative Words</h1>
+
+<p>The Foundation of the Interrogative Words for Seeking Information</p>
+
+</header>
+
+<!-- ====================================================== -->
+<!-- THE LAND ANIMALS -->
+<!-- ====================================================== -->
+
+<main class="container">
+
+<section class="welcome-box wide-box">
+
+<h2>Questions</h2>
+
+<div class="general-gallery">
+
+    <!-- ============================= -->
+    <!-- WHO -->
+    <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/quien.jpg"
+            class="lesson-image clickable-image"
+            alt="Quien"
+            onclick="playAudio('audioQuien')">
+
+        <audio id="audioQuien">
+            <source src="../audio/quien.wav" type="audio/wav">
+        </audio>
+
+    </div>
+
+ <!-- ============================= -->
+ <!-- WHAT -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/que.jpg"
+            class="lesson-image clickable-image"
+            alt="Que"
+            onclick="playAudio('audioQue')">
+
+        <audio id="audioQue">
+            <source src="../audio/que.wav" type="audio/wav">
+        </audio>
+
+    </div>
+
+ <!-- ============================= -->
+ <!-- WHEN -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/cuando.jpg"
+            class="lesson-image clickable-image"
+            alt="Cuando"
+            onclick="playAudio('audioCuando')">
+
+        <audio id="audioCuando">
+            <source src="../audio/cuando.wav" type="audio/wav">
+        </audio>
+
+    </div>
+<!-- ============================= -->
+ <!-- WHERE -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/donde.jpg"
+            class="lesson-image clickable-image"
+            alt="Donde"
+            onclick="playAudio('audioDonde')">
+
+        <audio id="audioDonde">
+            <source src="../audio/donde.wav" type="audio/wav">
+        </audio>
+
+    </div>
+<!-- ============================= -->
+ <!-- WHY -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/Porque.jpg"
+            class="lesson-image clickable-image"
+            alt="Porque"
+            onclick="playAudio('audioPorque')">
+
+        <audio id="audioPorque">
+            <source src="../audio/porque.wav" type="audio/wav">
+        </audio>
+
+    </div>
+<!-- ============================= -->
+ <!-- HOW -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/Como.jpg"
+            class="lesson-image clickable-image"
+            alt="Como"
+            onclick="playAudio('audioComo')">
+
+        <audio id="audioComo">
+            <source src="../audio/como.wav" type="audio/wav">
+        </audio>
+
+    </div>
+<!-- ============================= -->
+ <!-- HOW MANY -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/cuantos.jpg"
+            class="lesson-image clickable-image"
+            alt="Cuantos"
+            onclick="playAudio('audioCuantos')">
+
+        <audio id="audioCuantos">
+            <source src="../audio/cuantos.wav" type="audio/wav">
+        </audio>
+
+    </div>
+<!-- ============================= -->
+ <!-- HOW MUCH -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/cuanto.jpg"
+            class="lesson-image clickable-image"
+            alt="Cuanto"
+            onclick="playAudio('audioCuanto')">
+
+        <audio id="audioCuanto">
+            <source src="../audio/cuanto.wav" type="audio/wav">
+        </audio>
+
+    </div>
+<!-- ============================= -->
+ <!-- WHERE FROM -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/dedonde.jpg"
+            class="lesson-image clickable-image"
+            alt="Dedonde"
+            onclick="playAudio('audioDedonde')">
+
+        <audio id="audioDedonde">
+            <source src="../audio/dedonde.wav" type="audio/wav">
+        </audio>
+
+    </div>
+<!-- ============================= -->
+ <!-- WHERE TO -->
+ <!-- ============================= -->
+
+    <div class="vocab-card">
+
+        <img
+            src="../images/adonde.jpg"
+            class="lesson-image clickable-image"
+            alt="Adonde"
+            onclick="playAudio('audioAdonde')">
+
+        <audio id="audioAdonde">
+            <source src="../audio/Adonde.wav" type="audio/wav">
+        </audio>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+<!-- ====================================================== -->
+<!-- TEST - LEVEL 1: LISTEN AND CHOOSE -->
+<!-- ====================================================== -->
+
+<section class="welcome-box wide-box">
+
+<h2 id="test-title">Test - Level 1: Listen and Choose</h2>
+
+<p><strong>Click listen</strong>, then choose the correct picture.</p>
+
+<button class="audio-button" onclick="playCurrentQuestion()">
+▶ Listen
+</button>
+
+<div class="general-gallery" id="quiz-options">
+</div>
+
+<p id="quiz-response"></p>
+
+<p>
+<strong>Correct:</strong> <span id="correct-count">0</span> |
+<strong>Misses:</strong> <span id="miss-count">0</span>
+</p>
+
+<button class="next-button" onclick="nextQuestion()">
+Next
+</button>
+
+<button class="next-button" onclick="restartCurrentLevel()">
+Restart Current Level
+</button>
+
+<button class="next-button" onclick="restartEntireTest()">
+Restart Entire Test
+</button>
+
+</section>
+
+</main>
+
+<script src="../shared-audio.js"></script>
+<script src="../Lesson A - Animals.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+body {
+    margin: 0;
+    background-color: #0d1f1d;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #12312d;
+}
+
+h1 {
+    color: #35d4c4;
+    font-family: "Times New Roman", serif;
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 22px;
+    color: #e6e6e6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.welcome-box {
+    background-color: white;
+    color: black;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.welcome-colorbox {
+    background-color: #BCC8D5;
+    color: #b30000;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.welcome-box h2 {
+    color: #b30000;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 8px solid #35d4c4;
+    transition: 0.2s;
+}
+
+.card:hover {
+    background-color: #d9fff9;
+    transform: scale(1.03);
+}
+
+.card h3 {
+    color: #0A420D;
+    font-size: 28px;
+    margin-top: 0;
+}
+
+.card p {
+    font-size: 18px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #cccccc;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    background-color: #12312d;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    border: 1px solid #999;
+    padding: 12px;
+    font-size: 18px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.header-container {
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+position:relative;
+
+padding:30px;
+
+background-color:#12312d;
+
+}
+
+.header-text {
+
+text-align:center;
+
+}
+
+/*-- ====================================================== */
+/*-- IMAGES */
+/*-- ====================================================== */
+
+.flag-image {
+
+position:absolute;
+
+right:120px;
+
+width:420px;
+
+height:auto;
+
+border-radius:12px;
+
+box-shadow:0px 0px 20px black;
+
+}
+
+/* -------- Lesson A - Fruits and Vegetables - Image Settings ------------------------ */
+
+.lesson-image {
+    width: 210px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 20px black;
+}
+
+.fruit-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+
+.vegetable-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+
+/* ----------- On-Click Hover Over Image Settings --------------------------------*/
+
+.clickable-image {
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+
+.clickable-image:hover {
+    transform: scale(1.05);
+}
+
+/* -------- General Gallery - Image Settings ------------------------ */
+
+
+.general-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+
+/*-- ====================================================== */
+/*-- End of IMAGES */
+/*-- ====================================================== */
+
+
+.category-title{
+
+color:#35d4c4;
+
+font-size:38px;
+
+margin-top:60px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+font-family:"Times New Roman";
+
+}
+
+.lesson-nav {
+    background-color: #0d1f1d;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 2px solid #35d4c4;
+}
+
+.lesson-nav a {
+    color: #35d4c4;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.lesson-nav a:hover {
+    color: white;
+}
+
+.next-button {
+    display: inline-block;
+    background-color: #35d4c4;
+    color: black;
+    padding: 12px 24px;
+    margin-top: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.next-button:hover {
+    background-color: #28b8aa;
+    color: white;
+}
+
+.note-box {
+    background-color: #fff9c4;
+    color: black;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border-left: 8px solid #f0c419;
+}
+
+.note-box h2 {
+    color: #b30000;
+}
+
+/* ===================================== */
+/* SPECIAL LAYOUT CLASSES */
+/* ===================================== */
+
+.wide-box {
+    width: 120%;
+    margin-left: -10%;
+}
+
+
+/* ===================================== */
+/* TIP BOX - PRONUNCIATION TIP */
+/* ===================================== */
+.tip-box {
+    background-color: #dff4ff;
+    color: black;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border-left: 8px solid #4aa3df;
+}
+
+.tip-box h2 {
+    color: #0066cc;
+}
+
+/* ===================================== */
+/* TABLE - FOR YELLOW NOTE BLOCKS*/
+/* ===================================== */
+
+.note-table tr {
+    background-color: white;
+}
+
+.note-table tr:nth-child(even) {
+    background-color: white;
+}
+
+/* ===================================== */
+/* AUDIO FILE SPEAKER BUTTON*/
+/* ===================================== */
+
+.audio-button {
+    background: #dff4ff;
+    border: 1px solid #4aa3df;
+   border-radius: 6px;
+    padding: 2px 6px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.audio-button:hover {
+    background: #bdeaff;
+}
+
+/* ===================================== */
+/* AUDIO FILE ICON BUTTON*/
+/* ===================================== */
+
+.audio-icon {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.letter-sound {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.audio-icon {
+    background: #dff4ff;
+    border: 1px solid #4aa3df;
+    border-radius: 6px;
+    padding: 2px 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* ===================================== */
+/* HIGHLIGHT- VISUAL FEEDBACK*/
+/* for lesson A: Fruits & Vegetables TEST*/
+/* ===================================== */
+
+.selected-choice {
+    outline: 6px solid #35d4c4;
+    box-shadow: 0 0 25px #35d4c4;
+}
