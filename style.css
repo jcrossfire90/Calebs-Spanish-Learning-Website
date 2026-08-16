@@ -283,20 +283,41 @@ box-shadow:0px 0px 20px black;
 
 
 .category-title{
+     color:#35d4c4;
+     font-size:38px;
+     margin-top:70px;
+     margin-bottom:30px;
+     text-align:center;
+     font-family:"Times New Roman";
 
-color:#35d4c4;
+    width: min(1000px, calc(100% - 40px));
+    margin: 38px auto 18px;
+    padding-bottom: 10px 0;
 
-font-size:38px;
-
-margin-top:60px;
-
-margin-bottom:20px;
-
-text-align:center;
-
-font-family:"Times New Roman";
-
+    border-top: 2px solid #35d4c4;
+    border-bottom: 2px solid #35d4c4;
 }
+
+
+/* ================================================= */
+/* LESSON CATEGORY TITLES                            */
+/* ================================================= */
+
+.subcategory-title {
+    color: #ffffff;
+    font-size: 1.65rem;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: left;
+
+    width: min(1000px, calc(100% - 40px));
+    margin: 38px auto 18px;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #ffffff;
+}
+
+/* ================================================ */
 
 .lesson-nav {
     background-color: #0d1f1d;
@@ -438,4 +459,897 @@ font-family:"Times New Roman";
 .selected-choice {
     outline: 6px solid #35d4c4;
     box-shadow: 0 0 25px #35d4c4;
+}
+
+/* ================================================= */
+/* LESSON CARD PROGRESS STATUS                       */
+/* ================================================= */
+
+.card {
+    position: relative;
+}
+
+.lesson-status {
+    margin: 18px 0 0;
+    font-weight: bold;
+}
+
+.card.completed-card {
+    border-left-color: #2c9c55;
+}
+
+.completed-status {
+    color: #237a43;
+}
+
+.card.current-lesson-card {
+    border-left-color: #35cfc4;
+}
+
+.current-status {
+    color: #087f77;
+}
+
+.card.locked-card {
+    opacity: 0.55;
+    cursor: not-allowed;
+    filter: grayscale(70%);
+}
+
+.card.locked-card:hover {
+    transform: none;
+}
+
+.locked-status {
+    color: #5e1f1f;
+}
+
+/* ================================================= */
+/* STUDENT PROGRESS DASHBOARD                        */
+/* ================================================= */
+
+.progress-dashboard {
+    max-width: 1000px;
+    margin: 35px auto 55px;
+    padding: 28px;
+    background-color: white;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.progress-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.progress-dashboard-header h2 {
+    margin: 0 0 6px;
+    color: #b30000;
+}
+
+#learner-rank {
+    margin: 0;
+    color: #333333;
+    font-weight: bold;
+}
+
+.progress-points-box {
+    min-width: 120px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-align: center;
+    background-color: #35cfc4;
+    color: #062d2a;
+}
+
+.progress-points-box span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.progress-points-box small {
+    display: block;
+    margin-top: 3px;
+    font-weight: bold;
+}
+
+.progress-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.progress-stat {
+    padding: 18px;
+    border: 2px solid #35cfc4;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+    color: #111111;
+}
+
+.progress-stat span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0a3b36;
+}
+
+.progress-stat small {
+    color: #444444;
+    font-weight: bold;
+}
+
+.dashboard-progress-track {
+    width: 100%;
+    height: 18px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #d7ecea;
+}
+
+.dashboard-progress-fill {
+    width: 0;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #35cfc4;
+    transition: width 0.4s ease;
+}
+
+#dashboard-progress-message {
+    margin: 15px 0 0;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+
+    .progress-dashboard-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .progress-points-box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .progress-stat-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================= */
+/* DEVELOPER MODE LESSON CARDS                       */
+/* ================================================= */
+
+.card.developer-access-card {
+    border-left: 6px solid #d49a21;
+}
+
+.developer-status {
+    margin-top: 18px;
+    color: #8a5a00;
+    font-weight: bold;
+}
+
+/* ================================================= */
+/* GENERIC QUIZ RESULTS                              */
+/* ================================================= */
+
+.quiz-result-perfect {
+    color: green;
+    font-weight: bold;
+}
+
+.quiz-result-good {
+    color: darkorange;
+    font-weight: bold;
+}
+
+.quiz-result-practice {
+    color: darkorange;
+    font-weight: bold;
+}
+
+.quiz-result-needs-work {
+    color: darkred;
+    font-weight: bold;
+}
+
+.quiz-feedback {
+    margin-top: 10px;
+    color: #176b3a;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+/* ================================================= */
+/* GENERIC LISTENING ACTIVITY                        */
+/* ================================================= */
+
+.listening-activity-box {
+    text-align: center;
+}
+
+.listening-activity-prompt {
+    margin: 24px 0 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.listening-activity-input {
+    display: block;
+    width: 220px;
+    max-width: 80%;
+    margin: 0 auto 18px;
+    padding: 12px;
+    border: 2px solid #315f58;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.listening-activity-input:focus {
+    outline: 3px solid rgba(53, 212, 196, 0.3);
+}
+
+.listening-activity-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.listening-correct {
+    color: green;
+    font-weight: bold;
+}
+
+.listening-incorrect {
+    color: darkred;
+    font-weight: bold;
+}
+
+.listening-error {
+    color: red;
+    font-weight: bold;
+}
+
+.listening-feedback {
+    color: #176b3a;
+    font-weight: bold;
+}
+
+/* ================================================= */
+/* LISTENING AUDIO MODE SETTINGS                     */
+/* ================================================= */
+
+.audio-mode-settings {
+    max-width: 520px;
+    margin: 20px auto 26px;
+    padding: 16px;
+    border: 1px solid #315f58;
+    border-radius: 8px;
+    background: rgba(49, 95, 88, 0.08);
+}
+
+.audio-mode-heading {
+    margin: 0 0 12px;
+    font-weight: bold;
+}
+
+.audio-mode-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.audio-mode-button {
+    padding: 10px 16px;
+    border: 2px solid #315f58;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.audio-mode-button:hover {
+    transform: translateY(-1px);
+}
+
+.audio-mode-button.active-audio-mode {
+    background: #315f58;
+    color: white;
+}
+
+.audio-mode-current {
+    margin: 12px 0 0;
+    font-size: 0.95rem;
+}
+
+/* ================================================= */
+/* LESSON PROGRESS PANEL                             */
+/* ================================================= */
+
+.lesson-progress-panel {
+    margin-top: 24px;
+    margin-bottom: 28px;
+}
+
+.lesson-progress-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.lesson-progress-heading h2 {
+    margin-bottom: 10px;
+}
+
+#lesson-progress-percentage {
+    font-size: 1.2rem;
+}
+
+#lesson-progress-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+}
+
+#lesson-progress-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.lesson-activity-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    font-weight: bold;
+}
+
+.lesson-activity-complete {
+    font-weight: bold;
+}
+
+.lesson-activity-incomplete {
+    opacity: 0.8;
+}
+
+.lesson-progress-bar {
+    width: 100%;
+    height: 18px;
+    overflow: hidden;
+    border: 1px solid #315f58;
+    border-radius: 999px;
+    background: rgba(49, 95, 88, 0.12);
+}
+
+.lesson-progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: #315f58;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+#lesson-progress-text {
+    margin: 10px 0 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* ================================================= */
+/* LESSON COMPLETION MESSAGES                        */
+/* ================================================= */
+
+.lesson-success-message {
+    margin-top: 18px;
+    padding: 20px;
+    border: 2px solid #315f58;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.lesson-success-message h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.lesson-xp-earned {
+    margin: 14px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.lesson-already-complete-message {
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid #315f58;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ================================================= */
+/* POLISHED LESSON COMPLETION CARD                   */
+/* ================================================= */
+
+.lesson-completion-box {
+    text-align: center;
+}
+
+.lesson-success-message {
+    padding: 28px 20px;
+    border: 2px solid #315f58;
+    border-radius: 12px;
+    text-align: center;
+    background: rgba(49, 95, 88, 0.08);
+}
+
+.lesson-completion-icon {
+    margin-bottom: 8px;
+    font-size: 2.5rem;
+}
+
+.lesson-success-message h2 {
+    margin: 0 0 14px;
+}
+
+.lesson-mastery-message {
+    font-size: 1.15rem;
+}
+
+.lesson-xp-earned {
+    display: inline-block;
+    margin: 14px 0;
+    padding: 8px 18px;
+    border: 2px solid #315f58;
+    border-radius: 999px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.lesson-completion-achievement {
+    margin-top: 18px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.lesson-unlock-message {
+    font-weight: bold;
+}
+
+.lesson-incomplete-message {
+    padding: 18px;
+    text-align: center;
+}
+
+.lesson-continue-link {
+    display: inline-block;
+    margin-top: 18px;
+}
+
+/* ================================================= */
+/* LISTENING MODE CARD                               */
+/* ================================================= */
+
+.audio-preference-card {
+    width: min(860px, calc(100% - 40px));
+    margin: 28px auto 38px;
+    padding: 24px 28px;
+
+    border: 2px solid #35d4c4;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.audio-preference-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.audio-preference-content {
+    width: 100%;
+}
+
+.audio-preference-content h2 {
+    margin: 0 0 6px;
+    color: #b90000;
+}
+
+.audio-preference-description {
+    margin: 0 0 18px;
+    color: #444444;
+}
+
+.audio-mode-options {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.audio-mode-button {
+    flex: 1 1 240px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 18px;
+
+    border: 2px solid #315f58;
+    border-radius: 12px;
+
+    background: #f4f7f6;
+    color: #111111;
+
+    cursor: pointer;
+    text-align: left;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.audio-mode-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.audio-mode-icon {
+    font-size: 1.6rem;
+}
+
+.audio-mode-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.audio-mode-text strong {
+    font-size: 1rem;
+}
+
+.audio-mode-text small {
+    font-size: 0.85rem;
+    font-weight: normal;
+}
+
+.audio-mode-button.audio-mode-selected {
+    border-color: #1c6f65;
+    background: #dff7f3;
+    box-shadow: 0 0 0 4px rgba(53, 212, 196, 0.22);
+}
+
+.audio-mode-button.audio-mode-selected::after {
+    content: "✓ Selected";
+    margin-left: auto;
+    font-weight: bold;
+    color: #145c54;
+}
+
+.audio-mode-tip {
+    margin: 18px 0 0;
+    padding-top: 14px;
+
+    border-top: 1px solid #c9d5d2;
+
+    color: #444444;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 650px) {
+
+    .audio-preference-card {
+        padding: 20px;
+    }
+
+    .audio-preference-icon {
+        display: none;
+    }
+
+    .audio-mode-options {
+        flex-direction: column;
+    }
+
+    .audio-mode-button {
+        width: 100%;
+    }
+}
+
+/* ================================================= */
+/* SOUND IMAGE (pronunciation.html)                   */
+/* ================================================= */
+
+.lesson-sound-image {
+
+    display: block;
+
+    width: 620px;
+
+    max-width: 100%;
+
+    height: auto;
+
+    margin: 20px auto;
+
+    border-radius: 12px;
+
+    border: 3px solid #315f58;
+
+    box-shadow: 0 6px 16px rgba(0,0,0,.18);
+
+}
+
+/* ========================================== */
+/* LESSON 2 AUDIO BUTTON                      */
+/* ========================================== */
+
+.pronunciation-audio-button {
+
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    margin: 100px 0 0px;
+
+    font-size: 1.15rem;
+    font-weight: bold;
+
+    color: #12312d;
+
+    background: #eefaf8;
+
+    border: 2px solid #1c6f65;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: all .2s ease;
+}
+
+.pronunciation-audio-button:hover {
+
+    background: #dff7f3;
+    transform: translateY(-2px);
+
+}
+
+/* ================================================= */
+/* ACCENT MARK COMPARISON CARD                       */
+/* ================================================= */
+
+.accent-example {
+    margin: 35px 0;
+    padding: 28px;
+
+    background: #111515;
+
+    border: 2px solid #2f4f4b;
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+/* José title */
+
+.accent-example h3 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: white;
+}
+
+.accent-example h3 .accent-letter {
+    color: #e00000;
+}
+
+/* pronunciation under José */
+
+.accent-pronunciation {
+    margin: 6px 0 24px;
+
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    color: #d8d8d8;
+}
+
+
+/* two comparison cards */
+
+.accent-audio-compare {
+    display: flex;
+    gap: 22px;
+}
+
+
+/* WITH ACCENT */
+
+.accent-correct {
+    flex: 1;
+
+    padding: 28px 22px;
+
+    background: #0b2a1d;
+
+    border: 2px solid #2db85c;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* WITHOUT ACCENT */
+
+.accent-incorrect {
+    flex: 1;
+
+    padding: 28px 22px;
+
+    background: #351315;
+
+    border: 2px solid #e23b3b;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* headings inside cards */
+
+.accent-correct strong {
+    color: #4bd46d;
+    font-size: 1.2rem;
+}
+
+.accent-incorrect strong {
+    color: #ff5555;
+    font-size: 1.2rem;
+}
+
+
+/* labels under Listen buttons */
+
+.accent-correct span {
+    color: #4bd46d;
+    font-weight: bold;
+}
+
+.accent-incorrect span {
+    color: #ff5555;
+    font-weight: bold;
+}
+
+
+/* lesson 2 accent comparison buttons */
+
+.accent-correct .pronunciation-audio-button {
+    background: #101817;
+    color: white;
+
+    border: 2px solid #2db85c;
+}
+
+.accent-incorrect .pronunciation-audio-button {
+    background: #1b1011;
+    color: white;
+
+    border: 2px solid #e23b3b;
+}
+
+
+/* mobile */
+
+@media (max-width: 650px) {
+
+    .accent-audio-compare {
+        flex-direction: column;
+    }
+
+}
+
+/* Circle around checkmark and X */
+
+.accent-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    margin-right: 8px;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.accent-correct .accent-icon {
+    background: #4bd46d;
+    color: #0b2a1d;
+}
+
+.accent-incorrect .accent-icon {
+    background: #e23b3b;
+    color: #351315;
+}
+
+/* ================================================= */
+/* ACCENT CARD NAVIGATION                            */
+/* ================================================= */
+
+.accent-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+
+    margin-top: 26px;
+}
+
+.accent-navigation-button {
+    padding: 10px 18px;
+
+    color: #ffffff;
+    background: #24302e;
+
+    border: 2px solid #35d4c4;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.accent-navigation-button:hover {
+    background: #315f58;
+}
+
+.accent-navigation-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+#accent-counter {
+    color: #d8d8d8;
+    font-weight: bold;
 }

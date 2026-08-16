@@ -2,9 +2,20 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<title>Lesson 1 - Spanish Alphabet</title>
-<link rel="stylesheet" href="../style.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Lesson 1 - Spanish Alphabet</title>
+
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet" href="../style.css">
+
 </head>
 
 <body>
@@ -40,6 +51,50 @@ Spanish pronunciation is much easier than English.
 Most letters are pronounced consistently.
 Once you learn the sounds, reading Spanish becomes much easier.
 </p>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- LESSON PROGRESS -->
+<!-- ====================================================== -->
+
+<section class="welcome-box wide-box lesson-progress-panel">
+
+    <div class="lesson-progress-heading">
+
+        <h2>Lesson Progress</h2>
+
+        <strong id="lesson-progress-percentage">
+            0%
+        </strong>
+
+    </div>
+
+    <ul id="lesson-progress-checklist">
+
+        <li>○ Spelling Quiz</li>
+        <li>○ Sound Detective</li>
+
+    </ul>
+
+    <div
+        class="lesson-progress-bar"
+        role="progressbar"
+        aria-label="Lesson progress">
+
+        <div
+            id="lesson-progress-bar-fill"
+            class="lesson-progress-bar-fill"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0">
+        </div>
+
+    </div>
+
+    <p id="lesson-progress-text">
+        0 of 2 activities complete
+    </p>
 
 </section>
 
@@ -752,34 +807,278 @@ Say each vowel out loud:
 <p>
 Repeat them slowly and then faster.
 </p>
-
 </section>
 
 <!-- ====================================================== -->
-<!-- LESSON COMPLETE -->
+<!-- Quiz Questions -->
 <!-- ====================================================== -->
+
 
 <section class="welcome-box wide-box">
+<h2>Quiz</h2>
 
-<h2>Lesson Complete</h2>
+<p>Try spelling out the words you hear (you may ignore accent marks):</p>
 
 <p>
-You have learned the most important sounds in Spanish:
-the vowels.
+<strong>1.</strong> 
+<button class="audio-icon" onclick="playAudio('audioaa')">🔊</button>
+<audio id="audioaa">
+<source src="../audio/aa.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q1">
 </p>
 
 <p>
-Next lesson: Greetings
+<strong>2.</strong>
+<button class="audio-icon" onclick="playAudio('audiomesa')">🔊</button>
+<audio id="audiomesa">
+<source src="../audio/mesa.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q2">
 </p>
 
-<a href="greetings.html" class="next-button">
+<p>
+<strong>3.</strong>
+<button class="audio-icon" onclick="playAudio('audioii')">🔊</button>
+<audio id="audioii">
+<source src="../audio/ii.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q3">
+</p>
 
-Next Lesson ➜ Greetings
+<p>
+<strong>4.</strong> 
+<button class="audio-icon" onclick="playAudio('audioluna')">🔊</button>
+<audio id="audioluna">
+<source src="../audio/luna.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q4">
+</p>
 
-</a>
+<p>
+<strong>5.</strong> 
+<button class="audio-icon" onclick="playAudio('audiohola')">🔊</button>
+<audio id="audiohola">
+<source src="../audio/hola.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q5">
+</p>
+
+<p>
+<strong>6.</strong> 
+<button class="audio-icon" onclick="playAudio('audiopollo')">🔊</button>
+<audio id="audiopollo">
+<source src="../audio/pollo.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q6">
+</p>
+
+<p>
+<strong>7.</strong> 
+<button class="audio-icon" onclick="playAudio('audioee')">🔊</button>
+<audio id="audioee">
+<source src="../audio/ee.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q7">
+</p>
+
+<p>
+<strong>8.</strong> 
+<button class="audio-icon" onclick="playAudio('audiovino')">🔊</button>
+<audio id="audiovino">
+<source src="../audio/vino.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q8">
+</p>
+
+<p>
+<strong>9.</strong> 
+<button class="audio-icon" onclick="playAudio('audiouva')">🔊</button>
+<audio id="audiouva">
+<source src="../audio/uva.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q9">
+</p>
+
+<p>
+<strong>10.</strong> 
+<button class="audio-icon" onclick="playAudio('audiomariposa')">🔊</button>
+<audio id="audiomariposa">
+<source src="../audio/mariposa.wav" type="audio/wav">
+</audio> →
+<input type="text" id="q10">
+</p>
+
+<button onclick="checkAlphabetSpellingQuiz()">
+    Check Answers
+</button>
+
+<p id="results"></p>
+</section>
+
+<!-- ====================================================== -->
+<!-- LEVEL-BASED LISTENING ACTIVITY -->
+<!-- ====================================================== -->
+
+<section class="welcome-box wide-box listening-activity-box">
+
+    <h2 id="listening-activity-title">
+        Sound Detective
+    </h2>
+
+    <h3 id="listening-activity-level-description">
+        First and Last Letters
+    </h3>
+
+    <p id="listening-activity-instructions"></p>
+
+    <div class="audio-mode-settings">
+
+    <p class="audio-mode-heading">
+        Audio Speed
+    </p>
+
+    <div class="audio-mode-buttons">
+
+        <button
+            id="audio-mode-beginner"
+            class="audio-mode-button"
+            type="button"
+            onclick="ListeningActivity.setAudioMode('beginner')">
+
+            🐢 Beginner Audio
+
+        </button>
+
+        <button
+            id="audio-mode-natural"
+            class="audio-mode-button"
+            type="button"
+            onclick="ListeningActivity.setAudioMode('natural')">
+
+            ▶ Natural Speed
+
+        </button>
+
+    </div>
+
+    <p class="audio-mode-current">
+
+        Current setting:
+
+        <strong id="audio-mode-status">
+            Beginner Audio
+        </strong>
+
+    </p>
+
+</div>
+
+    <p id="listening-activity-question-progress">
+        Question 1 of 10
+    </p>
+
+    <button
+        class="audio-button"
+        type="button"
+        onclick="ListeningActivity.playAudio()">
+
+        ▶ Listen to Word
+
+    </button>
+
+    <p
+        id="listening-activity-prompt"
+        class="listening-activity-prompt">
+    </p>
+
+    <input
+        id="listening-activity-answer"
+        class="listening-activity-input"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Listening activity answer">
+
+    <div class="listening-activity-buttons">
+
+        <button
+            class="next-button"
+            type="button"
+            onclick="ListeningActivity.submitAnswer()">
+
+            Submit Answer
+
+        </button>
+
+        <button
+            class="next-button"
+            type="button"
+            onclick="ListeningActivity.nextQuestion()">
+
+            Next
+
+        </button>
+
+    </div>
+
+    <p id="listening-activity-response"></p>
+
+    <p>
+        <strong>Correct:</strong>
+
+        <span id="listening-activity-correct-count">
+            0
+        </span>
+
+        |
+
+        <strong>Misses:</strong>
+
+        <span id="listening-activity-miss-count">
+            0
+        </span>
+    </p>
+
+    <button
+        class="next-button"
+        type="button"
+        onclick="ListeningActivity.restartCurrentLevel()">
+
+        Restart Current Level
+
+    </button>
+
+    <button
+        class="next-button"
+        type="button"
+        onclick="ListeningActivity.restartEntireActivity()">
+
+        Restart Entire Activity
+
+    </button>
 
 </section>
 
+<!-- ====================================================== -->
+<!-- LESSON COMPLETION RESULT -->
+<!-- ====================================================== -->
+
+<section class="welcome-box wide-box lesson-completion-box">
+
+    <div id="lesson-completion-message"></div>
+
+    <a
+        id="continue-to-next-lesson"
+        class="next-button lesson-continue-link"
+        href="pronunciation.html"
+        hidden>
+
+        Continue to Lesson 2 ➜ Pronunciation
+
+    </a>
+
+</section>
 </main>
 
 <!-- ====================================================== -->
@@ -812,18 +1111,158 @@ function playAudio(audioId) {
 
 </script>
 
+
+<!-- ====================================================== -->
+<!-- ALPHABET SPELLING QUIZ CONFIGURATION -->
+<!-- ====================================================== -->
+<script src="../quiz-engine.js"></script>
+
+<script>
+
+const alphabetSpellingQuiz = {
+
+    resultsId: "results",
+
+    completionActivityId:
+        "spellingQuiz",
+
+    passingScore:
+        8,
+
+    questions: [
+
+        {
+            inputId: "q1",
+            acceptedAnswers: ["a"]
+        },
+
+        {
+            inputId: "q2",
+            acceptedAnswers: ["mesa"]
+        },
+
+        {
+            inputId: "q3",
+            acceptedAnswers: ["i", "y"],
+
+            correctFeedback:
+                "Question 3: Both 'i' and 'y' are accepted."
+        },
+
+        {
+            inputId: "q4",
+            acceptedAnswers: ["luna"]
+        },
+
+        {
+            inputId: "q5",
+            acceptedAnswers: ["hola"]
+        },
+
+        {
+            inputId: "q6",
+            acceptedAnswers: ["pollo"]
+        },
+
+        {
+            inputId: "q7",
+            acceptedAnswers: ["e"]
+        },
+
+        {
+            inputId: "q8",
+            acceptedAnswers: ["vino"]
+        },
+
+        {
+            inputId: "q9",
+            acceptedAnswers: ["uva"]
+        },
+
+        {
+            inputId: "q10",
+            acceptedAnswers: ["mariposa"]
+        }
+
+    ]
+
+};
+
+
+function checkAlphabetSpellingQuiz() {
+
+    QuizEngine.gradeQuiz(
+        alphabetSpellingQuiz
+    );
+
+}
+
+</script>
+
+<!-- ====================================================== -->
+<!-- CONNECTING ENGINES TO LESSON 1: ALPHABET -->
+<!-- ====================================================== -->
+
+<script src="../progress-engine.js"></script>
+
+<script>
+const lessonConfig = {
+
+    lessonId:
+        "lesson-1-alphabet",
+
+    lessonLabel:
+        "Lesson 1",
+
+    lessonTitle:
+        "Spanish Alphabet",
+
+    completionXP:
+        25,
+
+    nextLessonTitle:
+        "Lesson 2: Pronunciation",
+
+    requiredActivities: [
+
+        {
+            id:
+                "spellingQuiz",
+
+            label:
+                "Spelling Quiz"
+        },
+
+        {
+            id:
+                "soundDetective",
+
+            label:
+                "Sound Detective"
+        }
+
+    ]
+
+};
+</script>
+
+<script src="../lesson-ui-engine.js"></script>
+
+<script src="../lesson-completion-engine.js"></script>
+
+<script src="../listening-activity-engine.js"></script>
+
+<script src="../alphabet-listening-activity.js"></script>
+
+<script>
+ListeningActivity.initialize(
+    alphabetListeningActivity
+);
+</script>
+
 <!-- ====================================================== -->
 <!-- END OF WEBSITE BODY -->
 <!-- ====================================================== -->
 
 </body>
-
-<!-- ====================================================== -->
-<!-- CLOSING SCRIPTS -->
-<!-- ====================================================== -->
-
 </html>
-
-<!-- ====================================================== -->
-<!-- END OF SCRIPTS -->
-<!-- ====================================================== -->

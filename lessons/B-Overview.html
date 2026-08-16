@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Lessons 1 - 5 Overview</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<nav class="lesson-nav">
+
+<a href="../index.html">🏠 Home</a>
+<a href="days.html">← Lesson 5 - Days of the Week</a>
+<a href="Lesson A - Colors.html">Lesson A - Colors (Audio Lesson 1) →</a>
+</nav>
+
+<header>
+
+<h1>Lessons 1 - 5 Mnemonic Assessment</h1>
+
+<p>The Empirical Assessment of Proximal Cognition of Newly Assimilated Mnemonic Mesoamerican Lexicon </p>
+
+</header>
+
+
+<!-- ====================================================== -->
+<!-- TEST - LEVEL 1: LISTEN AND CHOOSE -->
+<!-- ====================================================== -->
+
+<section class="welcome-box wide-box">
+
+<h2 id="test-title">Test - Level 1: Listen and Choose</h2>
+
+<p><strong>Click listen</strong>, then choose the correct picture.</p>
+
+<button class="audio-button" onclick="playCurrentQuestion()">
+▶ Listen
+</button>
+
+<div class="general-gallery" id="quiz-options">
+</div>
+
+<p id="quiz-response"></p>
+
+<p>
+<strong>Correct:</strong> <span id="correct-count">0</span> |
+<strong>Misses:</strong> <span id="miss-count">0</span>
+</p>
+
+<button class="next-button" onclick="nextQuestion()">
+Next
+</button>
+
+<button class="next-button" onclick="restartCurrentLevel()">
+Restart Current Level
+</button>
+
+<button class="next-button" onclick="restartEntireTest()">
+Restart Entire Test
+</button>
+
+</section>
+
+</main>
+
+<script src="../shared-audio.js"></script>
+<script src="../Lesson A - Animals.js"></script>
+
+</body>
+</html>

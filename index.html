@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-
+.
 <title>Spanish Learning Portal</title>
 
 <link rel="stylesheet" href="style.css">
@@ -52,7 +52,59 @@ de una manera simple, organizada, y sencilla.
 
 </section>
 
+<!-- ====================================================== -->
+<!-- STUDENT PROGRESS DASHBOARD -->
+<!-- ====================================================== -->
 
+<section class="progress-dashboard">
+
+    <div class="progress-dashboard-header">
+
+        <div>
+            <h2>Your Progress</h2>
+            <p id="learner-rank">New Learner</p>
+        </div>
+
+        <div class="progress-points-box">
+            <span id="dashboard-total-points">0</span>
+            <small>Points</small>
+        </div>
+
+    </div>
+
+    <div class="progress-stat-grid">
+
+        <div class="progress-stat">
+            <span id="dashboard-lessons-completed">0</span>
+            <small>Lessons Completed</small>
+        </div>
+
+        <div class="progress-stat">
+            <span id="dashboard-current-lesson">Lesson 1</span>
+            <small>Current Lesson</small>
+        </div>
+
+        <div class="progress-stat">
+            <span id="dashboard-beginner-percent">0%</span>
+            <small>Beginner Progress</small>
+        </div>
+
+    </div>
+
+    <div class="dashboard-progress-track">
+
+        <div
+            id="dashboard-progress-fill"
+            class="dashboard-progress-fill">
+        </div>
+
+    </div>
+
+    <p id="dashboard-progress-message">
+        Begin Lesson 1 to start your Spanish journey.
+    </p>
+
+</section>
 
 <!-- BEGINNER -->
 
@@ -62,63 +114,91 @@ de una manera simple, organizada, y sencilla.
 
 <div class="menu-grid">
 
-<a class="card" href="lessons/alphabet.html">
+<a
+    class="card"
+    href="lessons/alphabet.html"
+    data-lesson-id="lesson-1-alphabet">
 
-<h3>Lesson 1 - Alphabet</h3>
+    <h3>Lesson 1 - Alphabet</h3>
 
-<p>Letters and pronunciation</p>
-
-</a>
-
-<a class="card" href="lessons/pronunciation.html">
-
-<h3>Lesson 2 - Pronunciation Rules</h3>
-
-<p>Silent H, J, Ñ, LL, RR, and accent marks</p>
+    <p>Letters and pronunciation</p>
 
 </a>
 
-<a class="card" href="lessons/greetings.html">
+<a
+    class="card"
+    href="lessons/pronunciation.html"
+    data-lesson-id="lesson-2-pronunciation">
 
-<h3>Lesson 3 - Greetings</h3>
+    <h3>Lesson 2 - Pronunciation Rules</h3>
 
-<p>Hello, goodbye, and common phrases</p>
-
-</a>
-
-<a class="card" href="lessons/numbers.html">
-
-<h3>Lesson 4 - Numbers</h3>
-
-<p>Counting and basic numbers</p>
+    <p>Silent H, J, Ñ, LL, RR, and accent marks</p>
 
 </a>
 
-<a class="card" href="lessons/days.html">
+<a
+    class="card"
+    href="lessons/greetings.html"
+    data-lesson-id="lesson-3-greetings">
 
-<h3>Lesson 5 - Days of the Week</h3>
+    <h3>Lesson 3 - Greetings</h3>
 
-<p>Learn weekdays and how to talk about schedules</p>
+    <p>Hello, goodbye, and common phrases</p>
 
 </a>
 
-<a class="card" href="lessons/Lesson A - Colors.html">
+<a
+    class="card"
+    href="lessons/numbers.html"
+    data-lesson-id="lesson-4-numbers">
 
-<h3>Lesson A - Colors</h3>
+    <h3>Lesson 4 - Numbers</h3>
+
+    <p>Counting and basic numbers</p>
+
+</a>
+
+<a
+    class="card"
+    href="lessons/days.html"
+    data-lesson-id="lesson-5-days">
+
+    <h3>Lesson 5 - Days of the Week</h3>
+
+    <p>Learn weekdays and how to talk about schedules</p>
+
+</a>
+</div>
+
+<h1 class="subcategory-title">Audio Lessons</h1>
+<div class="menu-grid">
+
+<a 
+     class="card" 
+     href="lessons/Lesson A - Colors.html"
+     data-lesson-id="lesson-a-colors">
+     
+     <h3>Lesson A - Colors</h3>
 
 <p>The Foundation of Wavelengths of Light through Visual Perceptive Interpretations</p>
 
 </a>
 
-<a class="card" href="lessons/Fruits & Vegetables.html">
+<a 
+     class="card" 
+     href="lessons/Fruits & Vegetables.html"
+     data-lesson-id="lesson-a-fruits-vegetables">
 
-<h3>Lesson A - Fruits & Vegetables</h3>
+     <h3>Lesson A - Fruits & Vegetables</h3>
 
 <p>Learn to say and recognize the fruits and vegetables</p>
 
 </a>
 
-<a class="card" href="lessons/Lesson A - Animals.html">
+<a 
+     class="card" 
+     href="lessons/Lesson A - Animals.html"
+     data-lesson-id="lesson-a-animals">
 
 <h3>Lesson A - Animals</h3>
 
@@ -126,7 +206,8 @@ de una manera simple, organizada, y sencilla.
 
 </a>
 
-<a class="card" href="lessons/Lesson A - Question Words.html">
+<a class="card" href="lessons/Lesson A - Question Words.html"
+data-lesson-id="lesson-a-question-words">
 
 <h3>Lesson A - Question Words</h3>
 
@@ -134,12 +215,12 @@ de una manera simple, organizada, y sencilla.
 
 </a>
 
-<a class="card" href="lessons/Lesson A - Prepositions.html">
-
+<a 
+     class="card" 
+     href="lessons/Lesson A - Prepositions.html"
+     data-lesson-id="lesson-a-prepositions">
 <h3>Lesson A - Prepositions</h3>
-
 <p>Direction, Time, Place, Location, and Spacial Relationships with objects</p>
-
 </a>
 
 </div>
@@ -152,7 +233,10 @@ de una manera simple, organizada, y sencilla.
 
 <div class="menu-grid">
 
-<a class="card" href="lessons/scenelesson1.html">
+<a 
+     class="card" 
+     href="lessons/scenelesson1.html"
+     data-lesson-id="lesson-scene-1">
 
 <h3>Scene Lesson 1</h3>
 
@@ -164,7 +248,7 @@ de una manera simple, organizada, y sencilla.
 
 <!-- GRAMMAR -->
 
-<h2 class="category-title">Grammar</h2>
+<h1 class="subcategory-title">Grammar</h1>
 
 <div class="menu-grid">
 
@@ -258,6 +342,13 @@ Created by Caleb | Spanish Learning Website
 
 </footer>
 
-</body>
+<!-- ====================================================== -->
+<!-- HOMEPAGE PROGRESS AND LESSON UNLOCKING -->
+<!-- ====================================================== -->
 
+<script src="progress-engine.js"></script>
+<script src="lesson-unlock-engine.js"></script>
+<script src="progress-dashboard.js"></script>
+
+</body>
 </html>
