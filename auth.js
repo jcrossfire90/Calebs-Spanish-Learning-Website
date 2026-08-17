@@ -20,3 +20,5 @@ async function signInWithGoogle() {
     }
 
 }
+
+console.log("Auth.js Loaded");
