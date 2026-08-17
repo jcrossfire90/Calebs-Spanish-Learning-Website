@@ -396,8 +396,8 @@ function handleAssessmentResult(
 
 
         updateStatus(
-            "Pronunciation assessment complete."
-        );
+    "Sofía has finished reviewing your pronunciation."
+);
 
     } else if (
         result.reason ===
@@ -432,50 +432,104 @@ function showScores(scores) {
         return;
     }
 
+    const overall =
+        formatScore(scores.pronunciation);
+
+    const accuracy =
+        formatScore(scores.accuracy);
+
+    const fluency =
+        formatScore(scores.fluency);
+
+    const completeness =
+        formatScore(scores.completeness);
+
+    const feedback =
+        getSofiaFeedback(
+            Number(scores.pronunciation)
+        );
 
     pronunciationScores.hidden = false;
 
     pronunciationScores.innerHTML = `
-        <h3>Pronunciation Results</h3>
+        <div class="sofia-feedback-card">
 
-        <p>
-            <strong>Practice word:</strong>
-            ${escapeHtml(scores.referenceText)}
-        </p>
+            <div class="sofia-feedback-header">
 
-        <p>
-            <strong>Azure heard:</strong>
-            ${escapeHtml(scores.recognizedText)}
-        </p>
+                <div class="sofia-avatar">
+                    S
+                </div>
 
-        <div class="pronunciation-score-grid">
+                <div>
+                    <p class="sofia-label">
+                        Sofía says...
+                    </p>
 
-            <div>
-                <strong>
-                    ${formatScore(scores.pronunciation)}%
-                </strong>
-                <span>Overall</span>
+                    <h3>
+                        ${feedback.title}
+                    </h3>
+                </div>
+
             </div>
 
-            <div>
-                <strong>
-                    ${formatScore(scores.accuracy)}%
-                </strong>
-                <span>Accuracy</span>
+            <p class="sofia-message">
+                ${feedback.message}
+            </p>
+
+            <div class="pronunciation-word-review">
+
+                <p>
+                    <span>Practice word</span>
+                    <strong>
+                        ${escapeHtml(scores.referenceText)}
+                    </strong>
+                </p>
+
+                <p>
+                    <span>Sofía heard</span>
+                    <strong>
+                        ${escapeHtml(scores.recognizedText)}
+                    </strong>
+                </p>
+
             </div>
 
-            <div>
+            <div class="overall-score">
+
+                <span>Overall Pronunciation</span>
+
                 <strong>
-                    ${formatScore(scores.fluency)}%
+                    ${overall}%
                 </strong>
-                <span>Fluency</span>
+
+                <div class="score-bar">
+
+                    <div
+                        class="score-bar-fill"
+                        style="width: ${overall}%"
+                    ></div>
+
+                </div>
+
             </div>
 
-            <div>
-                <strong>
-                    ${formatScore(scores.completeness)}%
-                </strong>
-                <span>Completeness</span>
+            <div class="pronunciation-score-grid">
+
+                ${createScoreCard(
+                    "Accuracy",
+                    accuracy
+                )}
+
+                ${createScoreCard(
+                    "Fluency",
+                    fluency
+                )}
+
+                ${createScoreCard(
+                    "Completeness",
+                    completeness
+                )}
+
             </div>
 
         </div>
@@ -483,6 +537,73 @@ function showScores(scores) {
 
 }
 
+function getSofiaFeedback(score) {
+
+    if (score >= 95) {
+
+        return {
+            title: "¡Excelente!",
+            message:
+                "Your pronunciation sounded clear and natural. Beautiful work!"
+        };
+
+    }
+
+    if (score >= 85) {
+
+        return {
+            title: "Great job!",
+            message:
+                "Your pronunciation was very strong. Listen once more and see whether you can make it even smoother."
+        };
+
+    }
+
+    if (score >= 70) {
+
+        return {
+            title: "Nice progress!",
+            message:
+                "I understood you. Try listening to the example again, then repeat the word slowly."
+        };
+
+    }
+
+    return {
+        title: "Let’s try again!",
+        message:
+            "Mistakes are part of learning. Listen carefully, take your time, and give the word another try."
+    };
+
+}
+
+
+function createScoreCard(label, score) {
+
+    return `
+        <div class="pronunciation-score-card">
+
+            <strong>
+                ${score}%
+            </strong>
+
+            <span>
+                ${label}
+            </span>
+
+            <div class="mini-score-bar">
+
+                <div
+                    class="mini-score-fill"
+                    style="width: ${score}%"
+                ></div>
+
+            </div>
+
+        </div>
+    `;
+
+}
 
 // ======================================================
 // STOP RECORDING
