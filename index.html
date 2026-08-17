@@ -52,19 +52,90 @@ de una manera simple, organizada, y sencilla.
 <!-- LEARNER SIGN IN -->
 <!-- ====================================================== -->
 
+<!-- ====================================================== -->
+<!-- LEARNER ACCOUNT -->
+<!-- ====================================================== -->
+
 <div class="auth-panel">
 
-    <p class="auth-message">
-        Sign in to save your lessons, XP, and pronunciation progress across devices.
-    </p>
+    <!-- SIGNED OUT VIEW -->
 
-    <button
-        id="googleSignInButton"
-        type="button"
-        onclick="signInWithGoogle()"
+    <div id="signedOutView">
+
+        <p class="auth-message">
+            Sign in to save your lessons, XP, and pronunciation
+            progress across devices.
+        </p>
+
+        <button
+            id="googleSignInButton"
+            type="button"
+            class="google-sign-in-button"
+            onclick="signInWithGoogle()"
+        >
+            Continue with Google
+        </button>
+
+    </div>
+
+
+    <!-- SIGNED IN VIEW -->
+
+    <div
+        id="signedInView"
+        class="signed-in-view"
+        hidden
     >
-        Continue with Google
-    </button>
+
+        <div class="signed-in-user">
+
+            <img
+                id="signedInAvatar"
+                class="signed-in-avatar"
+                alt="User profile picture"
+                hidden
+            >
+
+            <div>
+
+                <p
+                    id="signedInWelcome"
+                    class="signed-in-welcome"
+                >
+                    Welcome back!
+                </p>
+
+                <p
+                    id="signedInEmail"
+                    class="signed-in-email"
+                >
+                </p>
+
+                <p class="signed-in-confirmation">
+                    ✓ Your Polyglot account is connected.
+                </p>
+
+            </div>
+
+        </div>
+
+        <button
+            id="signOutButton"
+            type="button"
+            class="sign-out-button"
+            onclick="signOutUser()"
+        >
+            Sign Out
+        </button>
+
+    </div>
+
+    <p
+        id="authStatus"
+        class="auth-status"
+        role="status"
+    >
+    </p>
 
 </div>
 

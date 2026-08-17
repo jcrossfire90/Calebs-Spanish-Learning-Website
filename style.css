@@ -1564,3 +1564,92 @@ box-shadow:0px 0px 20px black;
     }
 
 }
+
+/* ====================================================== */
+/* POLYGLOT ACCOUNT PANEL                                 */
+/* ====================================================== */
+
+.auth-panel {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid #d8e3e0;
+}
+
+.auth-message {
+    margin: 0 0 14px;
+    line-height: 1.5;
+}
+
+.google-sign-in-button,
+.sign-out-button {
+    padding: 11px 18px;
+    border: 1px solid #0d746d;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.google-sign-in-button {
+    background: white;
+    color: #17312e;
+}
+
+.google-sign-in-button:hover {
+    background: #eef9f7;
+}
+
+.signed-in-view {
+    padding: 18px;
+    border: 2px solid #35d4c4;
+    border-radius: 12px;
+    background: #eefbf9;
+}
+
+.signed-in-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.signed-in-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #35d4c4;
+}
+
+.signed-in-welcome {
+    margin: 0 0 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #0d514b;
+}
+
+.signed-in-email {
+    margin: 0 0 5px;
+    color: #314d49;
+}
+
+.signed-in-confirmation {
+    margin: 0;
+    color: #137a50;
+    font-weight: bold;
+}
+
+.sign-out-button {
+    margin-top: 16px;
+    background: #17312e;
+    color: white;
+}
+
+.sign-out-button:hover {
+    background: #28514c;
+}
+
+.auth-status {
+    min-height: 20px;
+    margin: 10px 0 0;
+    font-weight: bold;
+}
