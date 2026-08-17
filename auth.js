@@ -1,6 +1,6 @@
 // ======================================================
 // POLYGLOT AUTHENTICATION
-// Google Sign-In, Session Display, and Sign-Out
+// Google Sign-In, Profile Display, and Sign-Out
 // ======================================================
 
 
@@ -83,7 +83,7 @@ async function signOutUser() {
 
     }
 
-    updateAuthenticationDisplay(null);
+    await updateAuthenticationDisplay(null);
 
     if (authStatus) {
         authStatus.textContent =
@@ -94,10 +94,68 @@ async function signOutUser() {
 
 
 // ======================================================
+// DETERMINE LEVEL FROM XP
+// ======================================================
+
+function getLearnerLevel(totalXP) {
+
+    if (totalXP >= 5000) {
+        return "5 — Avanzado";
+    }
+
+    if (totalXP >= 2500) {
+        return "4 — Intermedio alto";
+    }
+
+    if (totalXP >= 1000) {
+        return "3 — Intermedio";
+    }
+
+    if (totalXP >= 250) {
+        return "2 — Principiante avanzado";
+    }
+
+    return "1 — Principiante";
+
+}
+
+
+// ======================================================
+// LOAD PROFILE FROM SUPABASE
+// ======================================================
+
+async function loadUserProfile(user) {
+
+    const { data: profile, error } =
+        await window.polyglotSupabase
+            .from("profiles")
+            .select(
+                "full_name, avatar_url, total_xp, streak_days"
+            )
+            .eq("id", user.id)
+            .single();
+
+    if (error) {
+
+        console.error(
+            "Profile Load Error:",
+            error
+        );
+
+        return null;
+
+    }
+
+    return profile;
+
+}
+
+
+// ======================================================
 // UPDATE THE HOMEPAGE ACCOUNT DISPLAY
 // ======================================================
 
-function updateAuthenticationDisplay(session) {
+async function updateAuthenticationDisplay(session) {
 
     const signedOutView =
         document.getElementById("signedOutView");
@@ -114,23 +172,37 @@ function updateAuthenticationDisplay(session) {
     const avatar =
         document.getElementById("signedInAvatar");
 
+    const profileLevel =
+        document.getElementById("profileLevel");
+
+    const profileXP =
+        document.getElementById("profileXP");
+
+    const profileStreak =
+        document.getElementById("profileStreak");
+
     const authStatus =
         document.getElementById("authStatus");
 
 
-    // Some lesson pages may not contain the account panel.
+    // Pages without an account panel should do nothing.
 
     if (!signedOutView || !signedInView) {
         return;
     }
 
 
+    // ==================================================
     // USER IS SIGNED OUT
+    // ==================================================
 
     if (!session || !session.user) {
 
-        signedOutView.hidden = false;
-        signedInView.hidden = true;
+        signedOutView.hidden =
+            false;
+
+        signedInView.hidden =
+            true;
 
         if (authStatus) {
             authStatus.textContent = "";
@@ -141,7 +213,9 @@ function updateAuthenticationDisplay(session) {
     }
 
 
+    // ==================================================
     // USER IS SIGNED IN
+    // ==================================================
 
     const user =
         session.user;
@@ -149,30 +223,72 @@ function updateAuthenticationDisplay(session) {
     const metadata =
         user.user_metadata || {};
 
+    const profile =
+        await loadUserProfile(user);
+
     const displayName =
+        profile?.full_name ||
         metadata.full_name ||
         metadata.name ||
         user.email?.split("@")[0] ||
         "Learner";
 
     const avatarUrl =
+        profile?.avatar_url ||
         metadata.avatar_url ||
         metadata.picture ||
         "";
 
+    const totalXP =
+        profile?.total_xp ?? 0;
 
-    signedOutView.hidden = true;
-    signedInView.hidden = false;
+    const streakDays =
+        profile?.streak_days ?? 0;
+
+
+    signedOutView.hidden =
+        true;
+
+    signedInView.hidden =
+        false;
+
 
     if (welcomeText) {
         welcomeText.textContent =
             `¡Hola, ${displayName}! Welcome back.`;
     }
 
+
     if (emailText) {
         emailText.textContent =
             `Signed in as ${user.email}`;
     }
+
+
+    if (profileLevel) {
+        profileLevel.textContent =
+            getLearnerLevel(totalXP);
+    }
+
+
+    if (profileXP) {
+        profileXP.textContent =
+            `${totalXP} XP`;
+    }
+
+
+    if (profileStreak) {
+
+        const dayWord =
+            streakDays === 1
+                ? "día"
+                : "días";
+
+        profileStreak.textContent =
+            `${streakDays} ${dayWord}`;
+
+    }
+
 
     if (avatar) {
 
@@ -187,12 +303,14 @@ function updateAuthenticationDisplay(session) {
         } else {
 
             avatar.removeAttribute("src");
+
             avatar.hidden =
                 true;
 
         }
 
     }
+
 
     if (authStatus) {
         authStatus.textContent = "";
@@ -202,7 +320,7 @@ function updateAuthenticationDisplay(session) {
 
 
 // ======================================================
-// LOAD THE EXISTING SESSION WHEN THE PAGE OPENS
+// LOAD EXISTING SESSION WHEN PAGE OPENS
 // ======================================================
 
 async function initializeAuthentication() {
@@ -221,7 +339,7 @@ async function initializeAuthentication() {
 
     }
 
-    updateAuthenticationDisplay(
+    await updateAuthenticationDisplay(
         data.session
     );
 
@@ -229,7 +347,7 @@ async function initializeAuthentication() {
 
 
 // ======================================================
-// RESPOND TO FUTURE SIGN-IN AND SIGN-OUT EVENTS
+// RESPOND TO SIGN-IN AND SIGN-OUT EVENTS
 // ======================================================
 
 window.polyglotSupabase.auth.onAuthStateChange(
@@ -243,7 +361,7 @@ window.polyglotSupabase.auth.onAuthStateChange(
 );
 
 
-// Make functions available to the HTML buttons.
+// Make functions available to HTML buttons.
 
 window.signInWithGoogle =
     signInWithGoogle;
@@ -252,12 +370,13 @@ window.signOutUser =
     signOutUser;
 
 
-// Initialize after the homepage HTML is ready.
+// Initialize after the page HTML is ready.
 
 window.addEventListener(
     "DOMContentLoaded",
     initializeAuthentication
 );
+
 
 console.log(
     "Auth.js Loaded"
