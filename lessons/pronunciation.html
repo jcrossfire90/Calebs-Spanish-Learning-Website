@@ -801,26 +801,59 @@ For this reason, it is important to pay attention to accent marks when reading a
     <h2>Practice Your Pronunciation</h2>
 
     <p>
-        Record yourself, then listen to your pronunciation.
+        Listen to the example, then record yourself saying the word.
     </p>
 
-    <div class="pronunciation-recorder">
+    <div class="pronunciation-practice-card">
 
-        <button id="recordButton" type="button">
-            🎤 Record
+        <p class="practice-label">
+            Practice Word
+        </p>
+
+        <div
+            id="practice-word"
+            class="practice-word"
+        >
+            José
+        </div>
+
+        <p class="practice-pronunciation">
+            ho-SEH
+        </p>
+
+        <button
+            type="button"
+            class="pronunciation-audio-button"
+            data-audio-beginner="../audio/s-jose.wav"
+            data-audio-natural="../audio/jose.wav"
+        >
+            🔊 Listen to Native Speaker
         </button>
 
-        <button id="stopButton" type="button" disabled>
-            ⏹ Stop
-        </button>
+        <br><br>
 
-        <button id="playButton" type="button" disabled>
-            ▶ Play Recording
-        </button>
+        <div class="pronunciation-recorder">
 
-        <button id="retryButton" type="button" disabled>
-            ↻ Try Again
-        </button>
+            <button id="recordButton" type="button">
+                🎤 Record
+            </button>
+
+            <button id="stopButton" type="button" disabled>
+                ⏹ Stop
+            </button>
+
+            <button id="playButton" type="button" disabled>
+                ▶ Play Recording
+            </button>
+
+            <button id="retryButton" type="button" disabled>
+                ↻ Try Again
+            </button>
+
+        </div>
+
+        <!-- pronunciation-recorder.js will automatically
+             create the feedback area here -->
 
     </div>
 

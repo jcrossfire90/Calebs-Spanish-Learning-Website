@@ -123,11 +123,11 @@ async function startRecording() {
         }
 
 
-        const accentWord =
-            document.getElementById("accent-word");
+        const practiceWord =
+    document.getElementById("practice-word");
 
-        const referenceText =
-            accentWord?.textContent.trim();
+const referenceText =
+    practiceWord?.textContent.trim();
 
 
         if (!referenceText) {
