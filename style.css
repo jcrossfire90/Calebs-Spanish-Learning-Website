@@ -1566,90 +1566,114 @@ box-shadow:0px 0px 20px black;
 }
 
 /* ====================================================== */
-/* POLYGLOT ACCOUNT PANEL                                 */
+/* PROFILE SUMMARY CARD                                   */
 /* ====================================================== */
 
-.auth-panel {
-    margin-top: 22px;
-    padding-top: 20px;
-    border-top: 1px solid #d8e3e0;
-}
-
-.auth-message {
-    margin: 0 0 14px;
-    line-height: 1.5;
-}
-
-.google-sign-in-button,
-.sign-out-button {
-    padding: 11px 18px;
-    border: 1px solid #0d746d;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.google-sign-in-button {
-    background: white;
-    color: #17312e;
-}
-
-.google-sign-in-button:hover {
-    background: #eef9f7;
-}
-
 .signed-in-view {
-    padding: 18px;
+    padding: 22px;
     border: 2px solid #35d4c4;
-    border-radius: 12px;
+    border-radius: 14px;
     background: #eefbf9;
 }
 
 .signed-in-user {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
 }
 
 .signed-in-avatar {
-    width: 58px;
-    height: 58px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #35d4c4;
+    flex-shrink: 0;
 }
 
 .signed-in-welcome {
-    margin: 0 0 5px;
-    font-size: 20px;
+    margin: 0 0 4px;
+    font-size: 21px;
     font-weight: bold;
     color: #0d514b;
 }
 
 .signed-in-email {
-    margin: 0 0 5px;
-    color: #314d49;
+    margin: 0;
+    color: #49615e;
+}
+
+.profile-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.profile-summary-item {
+    padding: 16px;
+    border: 1px solid #8fcfc8;
+    border-radius: 10px;
+    background: white;
+    text-align: center;
+}
+
+.profile-summary-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #49615e;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-summary-item strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #0d514b;
+    font-size: 20px;
+}
+
+.profile-summary-item small {
+    display: block;
+    color: #607471;
+    font-size: 13px;
 }
 
 .signed-in-confirmation {
-    margin: 0;
+    margin: 18px 0 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #dff7f1;
     color: #137a50;
     font-weight: bold;
 }
 
 .sign-out-button {
     margin-top: 16px;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 8px;
     background: #17312e;
     color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .sign-out-button:hover {
     background: #28514c;
 }
 
-.auth-status {
-    min-height: 20px;
-    margin: 10px 0 0;
-    font-weight: bold;
+@media (max-width: 700px) {
+
+    .profile-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .signed-in-user {
+        align-items: flex-start;
+    }
+
 }
