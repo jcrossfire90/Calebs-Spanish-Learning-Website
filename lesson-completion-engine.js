@@ -1,5 +1,6 @@
 /* ================================================= */
 /* LESSON COMPLETION ENGINE                          */
+/* Local Progress + Supabase Cloud Saving            */
 /* ================================================= */
 
 const LessonCompletionEngine = (() => {
@@ -74,6 +75,158 @@ const LessonCompletionEngine = (() => {
 
             }
         );
+
+    }
+
+
+    /* ================================================= */
+    /* SAVE COMPLETED LESSON TO SUPABASE                 */
+    /* ================================================= */
+
+    async function saveLessonCompletionToCloud(
+        completionResult
+    ) {
+
+        // Keep local progress working if Supabase
+        // is not loaded on the current page.
+
+        if (!window.polyglotSupabase) {
+
+            console.info(
+                "Cloud save skipped: Supabase is not loaded."
+            );
+
+            return {
+                saved: false,
+                reason: "supabase-not-loaded"
+            };
+
+        }
+
+
+        // Find the currently signed-in learner.
+
+        const { data: sessionData, error: sessionError } =
+            await window.polyglotSupabase.auth.getSession();
+
+
+        if (sessionError) {
+
+            console.error(
+                "Cloud Session Error:",
+                sessionError
+            );
+
+            return {
+                saved: false,
+                reason: "session-error",
+                error: sessionError
+            };
+
+        }
+
+
+        const session =
+            sessionData.session;
+
+
+        // Signed-out learners continue using local progress.
+
+        if (!session || !session.user) {
+
+            console.info(
+                "Cloud save skipped: learner is signed out."
+            );
+
+            return {
+                saved: false,
+                reason: "signed-out"
+            };
+
+        }
+
+
+        const lessonTitle =
+            lessonConfig.lessonTitle ||
+            lessonConfig.lessonLabel ||
+            lessonConfig.lessonId;
+
+
+        const cloudRecord = {
+
+            user_id:
+                session.user.id,
+
+            lesson_id:
+                lessonConfig.lessonId,
+
+            lesson_title:
+                lessonTitle,
+
+            completed:
+                true,
+
+            xp_earned:
+                completionResult.xpAwarded || 0,
+
+            completed_at:
+                new Date().toISOString()
+
+        };
+
+
+        /*
+         * The database has a unique constraint on:
+         *
+         * user_id + lesson_id
+         *
+         * Therefore:
+         *
+         * - first completion inserts a row
+         * - later saves update that same row
+         * - duplicate lesson rows are not created
+         */
+
+        const { data, error } =
+            await window.polyglotSupabase
+                .from("lesson_progress")
+                .upsert(
+                    cloudRecord,
+                    {
+                        onConflict:
+                            "user_id,lesson_id"
+                    }
+                )
+                .select()
+                .single();
+
+
+        if (error) {
+
+            console.error(
+                "Lesson Cloud Save Error:",
+                error
+            );
+
+            return {
+                saved: false,
+                reason: "database-error",
+                error
+            };
+
+        }
+
+
+        console.log(
+            "Lesson saved to Supabase:",
+            data
+        );
+
+
+        return {
+            saved: true,
+            record: data
+        };
 
     }
 
@@ -183,12 +336,27 @@ const LessonCompletionEngine = (() => {
             );
 
 
-        if (
-            result.newlyCompleted &&
-            typeof LessonUIEngine !== "undefined"
-        ) {
+        if (result.newlyCompleted) {
 
-            LessonUIEngine.showLessonCompleted(
+            if (
+                typeof LessonUIEngine !== "undefined"
+            ) {
+
+                LessonUIEngine.showLessonCompleted(
+                    result
+                );
+
+            }
+
+
+            /*
+             * Save in the background.
+             *
+             * We do not pause or block the existing
+             * lesson-completion interface.
+             */
+
+            saveLessonCompletionToCloud(
                 result
             );
 
@@ -281,7 +449,9 @@ const LessonCompletionEngine = (() => {
 
         attemptLessonCompletion,
 
-        getLessonStatus
+        getLessonStatus,
+
+        saveLessonCompletionToCloud
 
     };
 
