@@ -430,6 +430,182 @@ const ProgressEngine = (() => {
 
     }
 
+    /* ================================================= */
+    /* SYNCHRONIZE PROGRESS FROM SUPABASE                */
+    /* ================================================= */
+
+    async function syncFromCloud() {
+
+        if (!window.polyglotSupabase) {
+
+            console.info(
+                "Cloud progress sync skipped: Supabase is not loaded."
+            );
+
+            return {
+                synced: false,
+                reason: "supabase-not-loaded"
+            };
+
+        }
+
+
+        const { data: sessionData, error: sessionError } =
+            await window.polyglotSupabase.auth.getSession();
+
+
+        if (sessionError) {
+
+            console.error(
+                "Cloud Progress Session Error:",
+                sessionError
+            );
+
+            return {
+                synced: false,
+                reason: "session-error",
+                error: sessionError
+            };
+
+        }
+
+
+        const session =
+            sessionData.session;
+
+
+        if (!session || !session.user) {
+
+            console.info(
+                "Cloud progress sync skipped: learner is signed out."
+            );
+
+            return {
+                synced: false,
+                reason: "signed-out"
+            };
+
+        }
+
+
+        const { data: cloudLessons, error: cloudError } =
+            await window.polyglotSupabase
+                .from("lesson_progress")
+                .select(
+                    "lesson_id, completed, xp_earned"
+                )
+                .eq(
+                    "completed",
+                    true
+                );
+
+
+        if (cloudError) {
+
+            console.error(
+                "Cloud Progress Download Error:",
+                cloudError
+            );
+
+            return {
+                synced: false,
+                reason: "database-error",
+                error: cloudError
+            };
+
+        }
+
+
+        const localProgress =
+            loadProgress();
+
+
+        const cloudCompletedLessons =
+            (cloudLessons || [])
+                .filter(
+                    lesson =>
+                        lesson.completed === true
+                )
+                .map(
+                    lesson =>
+                        lesson.lesson_id
+                );
+
+
+        const mergedCompletedLessons =
+            Array.from(
+                new Set([
+                    ...localProgress.completedLessons,
+                    ...cloudCompletedLessons
+                ])
+            );
+
+
+        const cloudXP =
+            (cloudLessons || []).reduce(
+                (total, lesson) => {
+
+                    return total +
+                        (
+                            Number(
+                                lesson.xp_earned
+                            ) || 0
+                        );
+
+                },
+                0
+            );
+
+
+        /*
+         * Keep whichever XP value is greater.
+         *
+         * This prevents older or incomplete cloud data
+         * from accidentally lowering local progress.
+         */
+
+        localProgress.totalXP =
+            Math.max(
+                localProgress.totalXP,
+                cloudXP
+            );
+
+
+        localProgress.completedLessons =
+            mergedCompletedLessons;
+
+
+        saveProgress(
+            localProgress
+        );
+
+
+        console.log(
+            "Cloud progress synchronized:",
+            localProgress
+        );
+
+
+        window.dispatchEvent(
+            new CustomEvent(
+                "polyglot-progress-synced",
+                {
+                    detail:
+                        localProgress
+                }
+            )
+        );
+
+
+        return {
+            synced: true,
+            cloudLessons:
+                cloudLessons || [],
+            progress:
+                localProgress
+        };
+
+    }
 
     /* ================================================= */
     /* DEVELOPER MODE                                    */
@@ -480,6 +656,8 @@ const ProgressEngine = (() => {
         getRequiredPoints,
 
         getProgress,
+
+        syncFromCloud,
 
         resetProgress
 

@@ -339,9 +339,29 @@ async function initializeAuthentication() {
 
     }
 
+
     await updateAuthenticationDisplay(
         data.session
     );
+
+
+    // Restore cloud progress after confirming
+    // that the learner is signed in.
+
+    if (
+        data.session &&
+        typeof ProgressEngine !== "undefined"
+    ) {
+
+        const syncResult =
+            await ProgressEngine.syncFromCloud();
+
+        console.log(
+            "Automatic cloud progress sync:",
+            syncResult
+        );
+
+    }
 
 }
 
@@ -351,11 +371,31 @@ async function initializeAuthentication() {
 // ======================================================
 
 window.polyglotSupabase.auth.onAuthStateChange(
-    (_event, session) => {
+    async (event, session) => {
 
-        updateAuthenticationDisplay(
+        await updateAuthenticationDisplay(
             session
         );
+
+
+        if (
+            session &&
+            typeof ProgressEngine !== "undefined" &&
+            (
+                event === "SIGNED_IN" ||
+                event === "INITIAL_SESSION"
+            )
+        ) {
+
+            const syncResult =
+                await ProgressEngine.syncFromCloud();
+
+            console.log(
+                "Authentication cloud sync:",
+                syncResult
+            );
+
+        }
 
     }
 );
