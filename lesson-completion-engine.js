@@ -348,6 +348,18 @@ const LessonCompletionEngine = (() => {
 
             }
 
+                if (
+        lessonConfig.lessonId ===
+        "lesson-1-alphabet" &&
+
+        typeof AchievementEngine !== "undefined"
+    ) {
+
+        AchievementEngine.awardAchievement(
+            "firstStep"
+        );
+
+    }
 
             /*
              * Save in the background.

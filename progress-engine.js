@@ -6,7 +6,7 @@ const ProgressEngine = (() => {
 
     const storageKey = "calebSpanishProgressV1";
 
-    const developerMode = true;
+    const developerMode = false;
 
 
     /* ================================================= */

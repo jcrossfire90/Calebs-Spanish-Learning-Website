@@ -1,153 +1,407 @@
 /* ================================================= */
 /* LESSON UNLOCK ENGINE                              */
+/* Local Progress + Cloud Restore Refresh            */
 /* ================================================= */
 
 const LessonUnlockEngine = (() => {
 
+
+    /* ================================================= */
+    /* INITIALIZE                                        */
+    /* ================================================= */
+
     function initialize() {
-        const lessonCards =
-            document.querySelectorAll("[data-lesson-id]");
 
-        lessonCards.forEach(card => {
-            const lessonId = card.dataset.lessonId;
+        if (
+            typeof ProgressEngine === "undefined"
+        ) {
 
-            const completed =
-    ProgressEngine.isLessonCompleted(lessonId);
+            console.error(
+                "ProgressEngine was not found."
+            );
 
-const developerMode =
-    ProgressEngine.isDeveloperMode();
+            return;
 
-const unlocked =
-    developerMode ||
-    ProgressEngine.isLessonUnlocked(lessonId);
-
-            if (completed) {
-    markCompleted(card);
-} else if (developerMode) {
-    markDeveloperAccess(card);
-} else if (unlocked) {
-    markCurrent(card);
-} else {
-    lockCard(card, lessonId);
-}
-        });
-    }
-
-
-    function removeExistingStatus(card) {
-        const existingStatus =
-            card.querySelector(".lesson-status");
-
-        if (existingStatus) {
-            existingStatus.remove();
         }
-    }
 
 
-    function markCompleted(card) {
-        removeExistingStatus(card);
+        refreshLessonCards();
 
-        card.classList.remove(
-            "locked-card",
-            "current-lesson-card"
+
+        /*
+         * Progress may arrive from Supabase after the
+         * homepage has already rendered.
+         *
+         * Refresh the lesson cards when cloud restore
+         * finishes.
+         */
+
+        window.addEventListener(
+            "polyglot-progress-synced",
+            refreshLessonCards
         );
 
-        card.classList.add("completed-card");
-        card.removeAttribute("aria-disabled");
 
-        const status =
-            document.createElement("p");
+        /*
+         * Use one delegated click handler instead of
+         * adding a new handler to every locked card.
+         */
 
-        status.className =
-            "lesson-status completed-status";
+        document.addEventListener(
+            "click",
+            preventLockedLessonNavigation
+        );
 
-        status.textContent =
-            "✓ Completed";
-
-        card.appendChild(status);
     }
 
-function markDeveloperAccess(card) {
-    removeExistingStatus(card);
 
-    card.classList.remove(
-        "locked-card",
-        "completed-card",
-        "current-lesson-card"
-    );
+    /* ================================================= */
+    /* REFRESH ALL LESSON CARDS                          */
+    /* ================================================= */
 
-    card.classList.add("developer-access-card");
-    card.removeAttribute("aria-disabled");
+    function refreshLessonCards() {
 
-    const status =
-        document.createElement("p");
+        const lessonCards =
+            document.querySelectorAll(
+                "[data-lesson-id]"
+            );
 
-    status.className =
-        "lesson-status developer-status";
 
-    status.textContent =
-        "🛠 Developer Access";
+        lessonCards.forEach(card => {
 
-    card.appendChild(status);
-}
+            const lessonId =
+                card.dataset.lessonId;
 
-    function markCurrent(card) {
+
+            if (!lessonId) {
+                return;
+            }
+
+
+            resetCardState(card);
+
+
+            const completed =
+                ProgressEngine.isLessonCompleted(
+                    lessonId
+                );
+
+
+            const developerMode =
+                ProgressEngine.isDeveloperMode();
+
+
+            const unlocked =
+                developerMode ||
+                ProgressEngine.isLessonUnlocked(
+                    lessonId
+                );
+
+
+            if (completed) {
+
+                markCompleted(card);
+
+            } else if (developerMode) {
+
+                markDeveloperAccess(card);
+
+            } else if (unlocked) {
+
+                markAvailable(card);
+
+            } else {
+
+                lockCard(
+                    card,
+                    lessonId
+                );
+
+            }
+
+        });
+
+    }
+
+
+    /* ================================================= */
+    /* RESET CARD STATE                                  */
+    /* ================================================= */
+
+    function resetCardState(card) {
+
         removeExistingStatus(card);
 
+
         card.classList.remove(
+
             "locked-card",
+
+            "completed-card",
+
+            "current-lesson-card",
+
+            "developer-access-card"
+
+        );
+
+
+        card.removeAttribute(
+            "aria-disabled"
+        );
+
+
+        card.removeAttribute(
+            "tabindex"
+        );
+
+    }
+
+
+    /* ================================================= */
+    /* REMOVE EXISTING STATUS                            */
+    /* ================================================= */
+
+    function removeExistingStatus(card) {
+
+        const existingStatus =
+            card.querySelector(
+                ".lesson-status"
+            );
+
+
+        if (existingStatus) {
+
+            existingStatus.remove();
+
+        }
+
+    }
+
+
+    /* ================================================= */
+    /* COMPLETED LESSON                                  */
+    /* ================================================= */
+
+    function markCompleted(card) {
+
+        card.classList.add(
             "completed-card"
         );
 
-        card.classList.add("current-lesson-card");
-        card.removeAttribute("aria-disabled");
 
         const status =
-            document.createElement("p");
+            createStatusElement(
 
-        status.className =
-            "lesson-status current-status";
+                "completed-status",
 
-        status.textContent =
-            "▶ Continue Learning";
+                "✓ Completada — Completed"
+
+            );
+
 
         card.appendChild(status);
+
     }
 
 
-    function lockCard(card, lessonId) {
-        removeExistingStatus(card);
+    /* ================================================= */
+    /* DEVELOPER ACCESS                                  */
+    /* ================================================= */
 
-        const requiredPoints =
-            ProgressEngine.getRequiredPoints(lessonId);
+    function markDeveloperAccess(card) {
 
-        card.classList.remove(
-            "completed-card",
+        card.classList.add(
+            "developer-access-card"
+        );
+
+
+        const status =
+            createStatusElement(
+
+                "developer-status",
+
+                "🛠 Developer Access"
+
+            );
+
+
+        card.appendChild(status);
+
+    }
+
+
+    /* ================================================= */
+    /* AVAILABLE LESSON                                  */
+    /* ================================================= */
+
+    function markAvailable(card) {
+
+        card.classList.add(
             "current-lesson-card"
         );
 
-        card.classList.add("locked-card");
-        card.setAttribute("aria-disabled", "true");
+
+        const status =
+            createStatusElement(
+
+                "current-status",
+
+                "▶ Continuar — Continue Learning"
+
+            );
+
+
+        card.appendChild(status);
+
+    }
+
+
+    /* ================================================= */
+    /* LOCKED LESSON                                     */
+    /* ================================================= */
+
+    function lockCard(
+        card,
+        lessonId
+    ) {
+
+        const requiredXP =
+            ProgressEngine.getRequiredXP(
+                lessonId
+            );
+
+
+        card.classList.add(
+            "locked-card"
+        );
+
+
+        card.setAttribute(
+            "aria-disabled",
+            "true"
+        );
+
+
+        card.setAttribute(
+            "tabindex",
+            "-1"
+        );
+
+
+        const xpText =
+            Number.isFinite(
+                Number(requiredXP)
+            )
+                ? `${requiredXP} XP required`
+                : "Complete earlier lessons";
+
+
+        const status =
+            createStatusElement(
+
+                "locked-status",
+
+                `🔒 Bloqueada — ${xpText}`
+
+            );
+
+
+        card.appendChild(status);
+
+    }
+
+
+    /* ================================================= */
+    /* CREATE STATUS ELEMENT                             */
+    /* ================================================= */
+
+    function createStatusElement(
+        statusClass,
+        message
+    ) {
 
         const status =
             document.createElement("p");
 
+
         status.className =
-            "lesson-status locked-status";
+            `lesson-status ${statusClass}`;
+
 
         status.textContent =
-            `🔒 Locked — ${requiredPoints} required points`;
+            message;
 
-        card.appendChild(status);
 
-        card.addEventListener("click", event => {
-            event.preventDefault();
-        });
+        return status;
+
     }
 
 
+    /* ================================================= */
+    /* PREVENT LOCKED NAVIGATION                         */
+    /* ================================================= */
+
+    function preventLockedLessonNavigation(
+        event
+    ) {
+
+        const lockedCard =
+            event.target.closest(
+                "[data-lesson-id].locked-card"
+            );
+
+
+        if (!lockedCard) {
+            return;
+        }
+
+
+        event.preventDefault();
+
+        event.stopPropagation();
+
+
+        const status =
+            lockedCard.querySelector(
+                ".locked-status"
+            );
+
+
+        if (status) {
+
+            status.classList.remove(
+                "locked-status-attention"
+            );
+
+
+            /*
+             * Force the animation to restart if the
+             * learner clicks the card repeatedly.
+             */
+
+            void status.offsetWidth;
+
+
+            status.classList.add(
+                "locked-status-attention"
+            );
+
+        }
+
+    }
+
+
+    /* ================================================= */
+    /* PUBLIC FUNCTIONS                                  */
+    /* ================================================= */
+
     return {
-        initialize
+
+        initialize,
+
+        refreshLessonCards
+
     };
 
 })();
