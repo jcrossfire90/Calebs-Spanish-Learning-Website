@@ -1860,3 +1860,63 @@ box-shadow:0px 0px 20px black;
     }
 
 }
+
+/* ====================================================== */
+/* POLYGLOT HOMEPAGE HEADER                               */
+/* ====================================================== */
+
+.header-container {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) 2fr minmax(170px, 1fr);
+    align-items: center;
+    gap: 24px;
+}
+
+.header-logo-area {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.polyglot-header-logo {
+    display: block;
+    width: 210px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.header-text {
+    text-align: center;
+}
+
+.header-language-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.flag-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+@media (max-width: 850px) {
+
+    .header-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .header-logo-area,
+    .header-language-area {
+        justify-content: center;
+    }
+
+    .polyglot-header-logo {
+        width: 190px;
+    }
+
+}
