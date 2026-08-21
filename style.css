@@ -1930,11 +1930,10 @@ box-shadow:0px 0px 20px black;
 .polyglot-banner {
     display: block;
 
-    width: 96%;
-    max-width: 1600px;
+    width: 92%;
+    height: 260px;
 
-    height: auto;
-    max-height: none;
+    object-fit: fill;
 
     margin: 0 auto;
 }
@@ -1960,12 +1959,13 @@ box-shadow:0px 0px 20px black;
 @media (max-width: 850px) {
 
     .polyglot-header {
-        padding: 10px;
+        padding: 8px 10px;
     }
 
     .polyglot-banner {
         width: 100%;
-        max-height: none;
+        height: 180px;
+        object-fit: fill;
     }
 
 }
