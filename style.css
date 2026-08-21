@@ -1862,9 +1862,10 @@ box-shadow:0px 0px 20px black;
 }
 
 /* ====================================================== */
-/* POLYGLOT HOMEPAGE HEADER                               */
+/*  OLD HEADER LAYOUT (Retired August 2026)               */
 /* ====================================================== */
 
+/*
 .header-container {
     display: grid;
     grid-template-columns: minmax(170px, 1fr) 2fr minmax(170px, 1fr);
@@ -1917,6 +1918,55 @@ box-shadow:0px 0px 20px black;
 
     .polyglot-header-logo {
         width: 190px;
+    }
+
+}
+*/
+
+/* ====================================================== */
+/* POLYGLOT BANNER HEADER                                 */
+/* ====================================================== */
+
+.polyglot-header {
+    width: 100%;
+    min-height: 250px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 30px;
+    box-sizing: border-box;
+
+    background: #07162f;
+    overflow: hidden;
+}
+
+.polyglot-banner {
+    display: block;
+
+    width: min(1500px, 100%);
+    height: auto;
+    max-height: 300px;
+
+    object-fit: contain;
+}
+
+
+/* ====================================================== */
+/* POLYGLOT BANNER — MOBILE                               */
+/* ====================================================== */
+
+@media (max-width: 850px) {
+
+    .polyglot-header {
+        min-height: 180px;
+        padding: 15px;
+    }
+
+    .polyglot-banner {
+        width: 100%;
+        max-height: 220px;
     }
 
 }
