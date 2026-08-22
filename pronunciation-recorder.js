@@ -17,9 +17,6 @@ let speechRecognizer;
 const recordButton =
     document.getElementById("recordButton");
 
-const stopButton =
-    document.getElementById("stopButton");
-
 const playButton =
     document.getElementById("playButton");
 
@@ -78,7 +75,6 @@ const pronunciationScores =
 
 if (
     recordButton &&
-    stopButton &&
     playButton &&
     retryButton
 ) {
@@ -86,11 +82,6 @@ if (
     recordButton.addEventListener(
         "click",
         startRecording
-    );
-
-    stopButton.addEventListener(
-        "click",
-        stopRecording
     );
 
     playButton.addEventListener(
