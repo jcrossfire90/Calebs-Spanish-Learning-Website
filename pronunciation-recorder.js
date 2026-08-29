@@ -275,9 +275,9 @@ const referenceText =
 
         mediaRecorder.start();
 
+        setRecordButtonState(true);
 
         recordButton.disabled = true;
-        stopButton.disabled = false;
         playButton.disabled = true;
         retryButton.disabled = true;
 
@@ -743,6 +743,61 @@ function resetRecording() {
 
 }
 
+function setRecordButtonState(isRecording) {
+
+    if (!recordButton) {
+        return;
+    }
+
+    const icon =
+        recordButton.querySelector(".button-icon");
+
+    const title =
+        recordButton.querySelector("strong");
+
+    const subtitle =
+        recordButton.querySelector("small");
+
+
+    recordButton.classList.toggle(
+        "is-recording",
+        isRecording
+    );
+
+
+    if (isRecording) {
+
+        if (icon) {
+            icon.textContent = "●";
+        }
+
+        if (title) {
+            title.textContent = "Recording…";
+        }
+
+        if (subtitle) {
+            subtitle.textContent =
+                "Speak, then pause";
+        }
+
+        return;
+    }
+
+
+    if (icon) {
+        icon.textContent = "🎙️";
+    }
+
+    if (title) {
+        title.textContent = "Record";
+    }
+
+    if (subtitle) {
+        subtitle.textContent =
+            "Start speaking";
+    }
+
+}
 
 // ======================================================
 // HELPERS
@@ -754,9 +809,7 @@ function resetButtons() {
         recordButton.disabled = false;
     }
 
-    if (stopButton) {
-        stopButton.disabled = true;
-    }
+    setRecordButtonState(false);
 
 }
 

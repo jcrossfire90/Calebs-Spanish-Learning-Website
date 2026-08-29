@@ -832,26 +832,33 @@ For this reason, it is important to pay attention to accent marks when reading a
 
         <br><br>
 
-        <div class="pronunciation-recorder">
+        <div class="recording-controls">
 
-            <button id="recordButton" type="button">
-                🎤 Record
-            </button>
+    <button id="recordButton" class="record-btn">
+        <span class="button-icon">🎙️</span>
+        <span>
+            <strong>Record</strong>
+            <small>Start speaking</small>
+        </span>
+    </button>
 
-            <button id="playButton" type="button" disabled>
-                ▶ Play Recording
-            </button>
+    <button id="playButton" class="play-btn" disabled>
+        <span class="button-icon">▶</span>
+        <span>
+            <strong>Play Recording</strong>
+            <small>Hear yourself</small>
+        </span>
+    </button>
 
-            <button id="retryButton" type="button" disabled>
-                ↻ Try Again
-            </button>
+    <button id="retryButton" class="retry-btn" disabled>
+        <span class="button-icon">↻</span>
+        <span>
+            <strong>Try Again</strong>
+            <small>Record again</small>
+        </span>
+    </button>
 
-        </div>
-
-        <!-- pronunciation-recorder.js will automatically
-             create the feedback area here -->
-
-    </div>
+</div>
 
 </section>
 
