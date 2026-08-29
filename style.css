@@ -1761,6 +1761,146 @@ box-shadow:0px 0px 20px black;
 }
 
 /* ====================================================== */
+/* PRONUNCIATION PRACTICE WORD DISPLAY                    */
+/* ====================================================== */
+
+.practice-word-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.practice-label {
+    margin: 0;
+
+    color: #0b514b;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.practice-word-count {
+    padding: 7px 12px;
+
+    border: 1px solid #9fded8;
+    border-radius: 999px;
+
+    background: #ecfbf9;
+    color: #09675f;
+
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.practice-word-display {
+    padding: 26px;
+
+    border: 1px solid #b7e3df;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4fffd,
+            #ecf8f7
+        );
+
+    box-shadow:
+        0 8px 22px rgba(4, 72, 67, 0.08);
+
+    text-align: center;
+}
+
+.practice-word {
+    color: #082f2c;
+
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.practice-pronunciation {
+    margin: 10px 0 4px;
+
+    color: #007c73;
+
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.practice-meaning {
+    margin: 8px 0 18px;
+
+    color: #556765;
+
+    font-size: 1rem;
+}
+
+.practice-sound-tip {
+    display: inline-block;
+
+    padding: 10px 16px;
+
+    border: 1px solid #f0d275;
+    border-radius: 12px;
+
+    background: #fff8d9;
+    color: #6c5200;
+
+    font-weight: 700;
+}
+
+.practice-sound-tip-line + .practice-sound-tip-line {
+    margin-top: 6px;
+}
+
+.practice-word-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+
+    margin-top: 18px;
+}
+
+.practice-nav-button {
+    padding: 11px 18px;
+
+    border: 2px solid #138b83;
+    border-radius: 11px;
+
+    background: #ffffff;
+    color: #0a5751;
+
+    font-size: 0.95rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.practice-nav-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+
+    background: #effcfb;
+
+    box-shadow:
+        0 7px 16px rgba(0, 0, 0, 0.12);
+}
+
+.practice-nav-button:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+/* ====================================================== */
 /* PROFILE SUMMARY CARD                                   */
 /* ====================================================== */
 

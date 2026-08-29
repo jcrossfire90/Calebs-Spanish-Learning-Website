@@ -24,6 +24,154 @@ const retryButton =
     document.getElementById("retryButton");
 
 
+const pronunciationWords = [
+    {
+    word: "José",
+
+    pronunciation:
+        "ho-SEH",
+
+    meaning:
+        "A common Spanish name",
+
+    soundTips: [
+        "The Spanish J sounds similar to the English H.",
+        "Stress the final syllable because José has an accent mark."
+    ],
+
+    audioBeginner:
+        "../audio/s-jose.wav",
+
+    audioNatural:
+        "../audio/jose.wav"
+},
+
+   {
+    word: "Jaguar",
+
+    pronunciation:
+        "hah-GWAHR",
+
+    meaning:
+        "Jaguar",
+
+    soundTips: [
+        "The opening J uses the same breathy sound heard in José.",
+        "Pronounce the U as part of the combined 'gua' sound."
+    ],
+
+    audioBeginner:
+        "../audio/s-jaguar.wav",
+
+    audioNatural:
+        "../audio/jaguar.wav"
+},
+
+{
+    word: "Hola",
+
+    pronunciation: "OH-lah",
+
+    meaning: "Hello",
+
+    soundTips: [
+        "The H is completely silent.",
+        "Stress the first syllable."
+    ],
+
+    audioBeginner: "../audio/s-hola.wav",
+
+    audioNatural: "../audio/hola.wav"
+},
+
+{
+    word: "Hospital",
+
+    pronunciation: "ohs-pee-TAHL",
+
+    meaning: "Hospital",
+
+    soundTips: [
+        "The H is silent.",
+        "Stress the last syllable."
+    ],
+
+    audioBeginner: "../audio/s-hospital.wav",
+
+    audioNatural: "../audio/hospital.wav"
+},
+
+{
+    word: "Huevos",
+
+    pronunciation: "WEH-vohs",
+
+    meaning: "Eggs",
+
+    soundTips: [
+        "The H is silent.",
+        "Pronounce 'Hue' as 'weh'."
+    ],
+
+    audioBeginner: "../audio/s-huevos.wav",
+
+    audioNatural: "../audio/huevos.wav"
+},
+
+{
+    word: "Hielo",
+
+    pronunciation: "EE-eh-loh",
+
+    meaning: "Ice",
+
+    soundTips: [
+        "The H is completely silent.",
+        "Pronounce IE as a smooth 'ee-eh' vowel combination. Do not add a separate Y or LL consonant sound."
+    ],
+
+    audioBeginner: "../audio/s-hielo.wav",
+
+    audioNatural: "../audio/hielo.wav"
+},
+
+{
+    word: "Niño",
+
+    pronunciation: "NEE-nyoh",
+
+    meaning: "Boy",
+
+    soundTips: [
+        "Ñ sounds like 'ny' in canyon.",
+        "Stress the first syllable."
+    ],
+
+    audioBeginner: "../audio/s-nino.wav",
+
+    audioNatural: "../audio/nino.wav"
+},
+
+{
+    word: "Año",
+
+    pronunciation: "AH-nyoh",
+
+    meaning: "Year",
+
+    soundTips: [
+        "Ñ sounds like 'ny'.",
+        "Do not pronounce it like 'ano'."
+    ],
+
+    audioBeginner: "../audio/s-ano.wav",
+
+    audioNatural: "../audio/ano.wav"
+}
+];
+
+let currentPronunciationWordIndex = 0;
+
 // ======================================================
 // RESULTS PANEL
 // ======================================================
@@ -798,6 +946,157 @@ function setRecordButtonState(isRecording) {
     }
 
 }
+
+function updatePronunciationWord() {
+
+    const wordData =
+        pronunciationWords[
+            currentPronunciationWordIndex
+        ];
+
+    const wordElement =
+        document.getElementById("practice-word");
+
+    const pronunciationElement =
+        document.getElementById(
+            "practice-pronunciation"
+        );
+
+    const meaningElement =
+        document.getElementById(
+            "practice-meaning"
+        );
+
+    const tipElement =
+        document.getElementById(
+            "practice-sound-tip"
+        );
+
+    const countElement =
+        document.getElementById(
+            "practice-word-count"
+        );
+
+    const audioButton =
+        document.querySelector(
+            ".pronunciation-audio-button"
+        );
+
+    const previousButton =
+        document.getElementById(
+            "previous-practice-word"
+        );
+
+    const nextButton =
+        document.getElementById(
+            "next-practice-word"
+        );
+
+
+    wordElement.textContent =
+        wordData.word;
+
+    pronunciationElement.textContent =
+        wordData.pronunciation;
+
+    meaningElement.textContent =
+        wordData.meaning;
+
+
+    /*
+     * Completely replace the previous word's tips.
+     */
+    tipElement.innerHTML = "";
+
+    const soundTips =
+        Array.isArray(wordData.soundTips)
+            ? wordData.soundTips
+            : [];
+
+    soundTips.forEach(tip => {
+
+        const tipLine =
+            document.createElement("div");
+
+        tipLine.className =
+            "practice-sound-tip-line";
+
+        tipLine.textContent =
+            `• ${tip}`;
+
+        tipElement.appendChild(tipLine);
+
+    });
+
+
+    countElement.textContent =
+        `${currentPronunciationWordIndex + 1} of ${pronunciationWords.length}`;
+
+
+    audioButton.dataset.audioBeginner =
+        wordData.audioBeginner;
+
+    audioButton.dataset.audioNatural =
+        wordData.audioNatural;
+
+
+    /*
+     * Recalculate navigation after every word change.
+     */
+    previousButton.disabled =
+        currentPronunciationWordIndex <= 0;
+
+    nextButton.disabled =
+        currentPronunciationWordIndex >=
+        pronunciationWords.length - 1;
+
+
+    resetRecording();
+
+}
+
+const previousPracticeWordButton =
+    document.getElementById(
+        "previous-practice-word"
+    );
+
+const nextPracticeWordButton =
+    document.getElementById(
+        "next-practice-word"
+    );
+
+
+previousPracticeWordButton?.addEventListener(
+    "click",
+    () => {
+
+        if (
+            currentPronunciationWordIndex > 0
+        ) {
+            currentPronunciationWordIndex--;
+
+            updatePronunciationWord();
+        }
+
+    }
+);
+
+
+nextPracticeWordButton?.addEventListener(
+    "click",
+    () => {
+
+        if (
+            currentPronunciationWordIndex <
+            pronunciationWords.length - 1
+        ) {
+            currentPronunciationWordIndex++;
+
+            updatePronunciationWord();
+        }
+
+    }
+);
 
 // ======================================================
 // HELPERS
