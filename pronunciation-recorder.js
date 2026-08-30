@@ -40,7 +40,7 @@ const pronunciationWords = [
     ],
 
     audioBeginner:
-        "../audio/s-jose.wav",
+        "../audio/jose.wav",
 
     audioNatural:
         "../audio/jose.wav"
