@@ -839,22 +839,24 @@ function showScores(scores) {
 
             <div class="overall-score">
 
-                <span>Overall Pronunciation</span>
+        <span>Sofía's Assessment</span>
 
-                <strong>
-                    ${overall}%
-                </strong>
+        <strong class="mastery-rating">
+        ${feedback.title}
+        </strong>
 
-                <div class="score-bar">
+        <small class="mastery-score">
+        Pronunciation score: ${overall}%
+        </small>
 
-                    <div
-                        class="score-bar-fill"
-                        style="width: ${overall}%"
-                    ></div>
+        <div class="score-bar">
 
-                </div>
-
-            </div>
+            <div
+                class="score-bar-fill"
+                style="width: ${overall}%"
+            ></div>
+        </div>
+    </div>
 
             <div class="pronunciation-score-grid">
 
@@ -882,22 +884,42 @@ function showScores(scores) {
 
 function getSofiaFeedback(score) {
 
-    if (score >= 95) {
+    if (score >= 98) {
 
         return {
-            title: "¡Excelente!",
+            title: "🌟 Native-like",
+            message:
+                "Your pronunciation sounded exceptionally natural. Outstanding work!"
+        };
+
+    }
+
+    if (score >= 94) {
+
+        return {
+            title: "⭐ Excellent",
             message:
                 "Your pronunciation sounded clear and natural. Beautiful work!"
         };
 
     }
 
-    if (score >= 85) {
+    if (score >= 88) {
 
         return {
-            title: "Great job!",
+            title: "👍 Very Good",
             message:
-                "Your pronunciation was very strong. Listen once more and see whether you can make it even smoother."
+                "Great job! Just a few small pronunciation details can make it even better."
+        };
+
+    }
+
+    if (score >= 80) {
+
+        return {
+            title: "🙂 Good",
+            message:
+                "Nice work! Keep practicing to make your pronunciation even smoother."
         };
 
     }
@@ -905,17 +927,27 @@ function getSofiaFeedback(score) {
     if (score >= 70) {
 
         return {
-            title: "Nice progress!",
+            title: "📚 Needs Practice",
             message:
-                "I understood you. Try listening to the example again, then repeat the word slowly."
+                "You are making progress. Listen carefully to the native speaker and try again."
+        };
+
+    }
+
+    if (score >= 60) {
+
+        return {
+            title: "💪 Keep Practicing",
+            message:
+                "Good effort! Focus on each sound and take your time."
         };
 
     }
 
     return {
-        title: "Let’s try again!",
+        title: "🎯 Let’s Practice Together",
         message:
-            "Mistakes are part of learning. Listen carefully, take your time, and give the word another try."
+            "You are off to a good start. Listen again and repeat the word slowly."
     };
 
 }
