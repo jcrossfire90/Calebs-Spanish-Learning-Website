@@ -889,71 +889,258 @@ function showScores(scores) {
 
 function getSofiaFeedback(score) {
 
-    if (score >= 98) {
+    const feedbackLevels = {
 
-        return {
-            title: "🌟 Native-like",
-            message:
-                "Your pronunciation sounded exceptionally natural. Outstanding work!"
-        };
+        nativeLike: [
+            {
+                title: "🌟 Native-like",
+                message:
+                    "That sounded exceptionally natural. Outstanding work!"
+            },
+            {
+                title: "🌟 Native-like",
+                message:
+                    "Beautifully spoken! Your pronunciation was smooth and confident."
+            },
+            {
+                title: "🌟 Native-like",
+                message:
+                    "Fantastic! Every sound came through clearly and naturally."
+            },
+            {
+                title: "🌟 Native-like",
+                message:
+                    "That was remarkably polished. You made it sound effortless!"
+            },
+            {
+                title: "🌟 Native-like",
+                message:
+                    "Wonderful pronunciation! That sounded ready for a real conversation."
+            }
+        ],
 
-    }
+        excellent: [
+            {
+                title: "⭐ Excellent",
+                message:
+                    "Your pronunciation sounded clear and natural. Beautiful work!"
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "Excellent pronunciation! I understood every sound clearly."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "You nailed it! That was confident and very natural."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "Outstanding work! Your pronunciation was strong and smooth."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "Wonderful job! Every syllable came through clearly."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "That sounded great! Keep speaking with that same confidence."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "Beautifully spoken! Your practice is really paying off."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "Very impressive! That pronunciation sounded natural and clear."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "Fantastic work! You are building excellent pronunciation habits."
+            },
+            {
+                title: "⭐ Excellent",
+                message:
+                    "That made me smile. Excellent pronunciation!"
+            }
+        ],
 
-    if (score >= 94) {
+        veryGood: [
+            {
+                title: "👍 Very Good",
+                message:
+                    "Very nice! Just a small adjustment could make it sound even more natural."
+            },
+            {
+                title: "👍 Very Good",
+                message:
+                    "Great pronunciation! You are getting closer with every attempt."
+            },
+            {
+                title: "👍 Very Good",
+                message:
+                    "Nicely done! Listen once more for the smaller sound details."
+            },
+            {
+                title: "👍 Very Good",
+                message:
+                    "You are doing really well. One more try could make it excellent."
+            },
+            {
+                title: "👍 Very Good",
+                message:
+                    "Strong work! Your pronunciation was clear and easy to understand."
+            }
+        ],
 
-        return {
-            title: "⭐ Excellent",
-            message:
-                "Your pronunciation sounded clear and natural. Beautiful work!"
-        };
+        good: [
+            {
+                title: "🙂 Good",
+                message:
+                    "Nice effort! You are definitely moving in the right direction."
+            },
+            {
+                title: "🙂 Good",
+                message:
+                    "Good work! Try smoothing out the sounds with one more attempt."
+            },
+            {
+                title: "🙂 Good",
+                message:
+                    "I understood you. Listen again and try matching the rhythm."
+            },
+            {
+                title: "🙂 Good",
+                message:
+                    "You are making progress! Try saying the word a little more slowly."
+            },
+            {
+                title: "🙂 Good",
+                message:
+                    "That was a solid attempt. Keep practicing and it will feel more natural."
+            }
+        ],
 
-    }
+        needsPractice: [
+            {
+                title: "📚 Needs Practice",
+                message:
+                    "You are getting there! Listen carefully and try matching the example."
+            },
+            {
+                title: "📚 Needs Practice",
+                message:
+                    "Let’s slow it down and focus on each syllable."
+            },
+            {
+                title: "📚 Needs Practice",
+                message:
+                    "Keep going! Another careful attempt can make a big difference."
+            },
+            {
+                title: "📚 Needs Practice",
+                message:
+                    "Listen once more, take your time, and try the word again."
+            }
+        ],
 
-    if (score >= 88) {
+        keepPracticing: [
+            {
+                title: "💪 Keep Practicing",
+                message:
+                    "Good effort! Focus on each sound and do not rush."
+            },
+            {
+                title: "💪 Keep Practicing",
+                message:
+                    "You are building the sound step by step. Give it another try."
+            },
+            {
+                title: "💪 Keep Practicing",
+                message:
+                    "Take your time and repeat the word one syllable at a time."
+            },
+            {
+                title: "💪 Keep Practicing",
+                message:
+                    "Every attempt helps. Listen carefully and try again when you are ready."
+            }
+        ],
 
-        return {
-            title: "👍 Very Good",
-            message:
-                "Great job! Just a few small pronunciation details can make it even better."
-        };
+        practiceTogether: [
+            {
+                title: "🎯 Let’s Practice Together",
+                message:
+                    "You are off to a good start. Listen again and repeat the word slowly."
+            },
+            {
+                title: "🎯 Let’s Practice Together",
+                message:
+                    "Do not worry. Let’s listen closely and try it one more time."
+            },
+            {
+                title: "🎯 Let’s Practice Together",
+                message:
+                    "Take your time. Every attempt helps your pronunciation improve."
+            },
+            {
+                title: "🎯 Let’s Practice Together",
+                message:
+                    "Mistakes are part of learning. Listen, repeat, and keep going."
+            }
+        ]
 
-    }
-
-    if (score >= 80) {
-
-        return {
-            title: "🙂 Good",
-            message:
-                "Nice work! Keep practicing to make your pronunciation even smoother."
-        };
-
-    }
-
-    if (score >= 70) {
-
-        return {
-            title: "📚 Needs Practice",
-            message:
-                "You are making progress. Listen carefully to the native speaker and try again."
-        };
-
-    }
-
-    if (score >= 60) {
-
-        return {
-            title: "💪 Keep Practicing",
-            message:
-                "Good effort! Focus on each sound and take your time."
-        };
-
-    }
-
-    return {
-        title: "🎯 Let’s Practice Together",
-        message:
-            "You are off to a good start. Listen again and repeat the word slowly."
     };
+
+
+    let feedbackPool;
+
+
+    if (score >= 98) {
+        feedbackPool =
+            feedbackLevels.nativeLike;
+    }
+    else if (score >= 94) {
+        feedbackPool =
+            feedbackLevels.excellent;
+    }
+    else if (score >= 88) {
+        feedbackPool =
+            feedbackLevels.veryGood;
+    }
+    else if (score >= 80) {
+        feedbackPool =
+            feedbackLevels.good;
+    }
+    else if (score >= 70) {
+        feedbackPool =
+            feedbackLevels.needsPractice;
+    }
+    else if (score >= 60) {
+        feedbackPool =
+            feedbackLevels.keepPracticing;
+    }
+    else {
+        feedbackPool =
+            feedbackLevels.practiceTogether;
+    }
+
+
+    const randomIndex =
+        Math.floor(
+            Math.random() *
+            feedbackPool.length
+        );
+
+
+    return feedbackPool[randomIndex];
 
 }
 
