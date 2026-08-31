@@ -823,6 +823,13 @@ For this reason, it is important to pay attention to accent marks when reading a
 
 <div class="practice-word-display">
 
+<img
+    id="practice-word-image"
+    class="practice-word-image"
+    src="../images/jose-fixed.png"
+    alt="Mateo introducing José"
+>
+
     <div
         id="practice-word"
         class="practice-word"
@@ -856,8 +863,9 @@ For this reason, it is important to pay attention to accent marks when reading a
 </div>
 
         <button
-            type="button"
-            class="pronunciation-audio-button"
+        id="practice-word-audio-button"
+        type="button"
+        class="pronunciation-audio-button"
             data-audio-beginner="../audio/s-jose.wav"
             data-audio-natural="../audio/jose.wav"
         >
@@ -881,7 +889,10 @@ For this reason, it is important to pay attention to accent marks when reading a
         id="next-practice-word"
         class="practice-nav-button"
         type="button"
+
+        updatePronunciationWord();
     >
+
         Next Word →
     </button>
 

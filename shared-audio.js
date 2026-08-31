@@ -235,47 +235,130 @@ const SharedAudio = (() => {
     }
 
 
-    /* ======================================================== */
-    /* PLAY DATA-AUDIO BUTTON                                   */
-    /* ======================================================== */
+   /* ======================================================== */
+/* PLAY DATA-AUDIO BUTTON                                   */
+/* ======================================================== */
 
-    function playButton(button) {
+async function playButton(button) {
 
-        const audioSource =
-            getButtonAudioSource(button);
+    const audioSource =
+        getButtonAudioSource(button);
 
 
-        if (!audioSource) {
+    if (!audioSource) {
 
-            console.error(
-                "No audio file was assigned to this button.",
-                button
+        console.error(
+            "No audio file was assigned to this button.",
+            button
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Clicking the same active button stops its audio.
+     */
+
+    if (
+        currentButton === button &&
+        currentAudio &&
+        !currentAudio.paused
+    ) {
+
+        stopCurrentAudio();
+        return;
+
+    }
+
+
+    const audio =
+        new Audio();
+
+
+    audio.preload =
+        "auto";
+
+    audio.src =
+        audioSource;
+
+    audio.load();
+
+
+    /*
+     * Wait until the short audio clip is ready before
+     * beginning playback. This prevents the first part
+     * of a word from being clipped.
+     */
+
+    try {
+
+        if (audio.readyState < 3) {
+
+            await new Promise(
+                (resolve, reject) => {
+
+                    const cleanup = () => {
+
+                        audio.removeEventListener(
+                            "canplaythrough",
+                            handleReady
+                        );
+
+                        audio.removeEventListener(
+                            "error",
+                            handleError
+                        );
+
+                    };
+
+
+                    const handleReady = () => {
+
+                        cleanup();
+                        resolve();
+
+                    };
+
+
+                    const handleError = () => {
+
+                        cleanup();
+
+                        reject(
+                            new Error(
+                                `Audio could not load: ${audioSource}`
+                            )
+                        );
+
+                    };
+
+
+                    audio.addEventListener(
+                        "canplaythrough",
+                        handleReady,
+                        {
+                            once: true
+                        }
+                    );
+
+
+                    audio.addEventListener(
+                        "error",
+                        handleError,
+                        {
+                            once: true
+                        }
+                    );
+
+                }
             );
 
-            return;
-
         }
 
 
-        /*
-        Clicking the same active button
-        stops its audio.
-        */
-
-        if (
-            currentButton === button &&
-            currentAudio &&
-            !currentAudio.paused
-        ) {
-
-            stopCurrentAudio();
-            return;
-
-        }
-
-
-        const audio =
-            new Audio(audioSource);
+        audio.currentTime = 0;
 
 
         playAudioObject(
@@ -283,9 +366,18 @@ const SharedAudio = (() => {
             button
         );
 
+    } catch (error) {
+
+        console.error(
+            "Audio preparation failed:",
+            error
+        );
+
+        stopCurrentAudio();
+
     }
 
-
+}
     /* ======================================================== */
     /* AUDIO MODE                                               */
     /* ======================================================== */

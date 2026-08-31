@@ -25,22 +25,26 @@ const retryButton =
 
 
 const pronunciationWords = [
-    {
+   {
     word: "José",
 
-    pronunciation:
-        "ho-SEH",
+    pronunciation: "ho-SEH",
 
-    meaning:
-        "A common Spanish name",
+    meaning: "A common Spanish name",
 
     soundTips: [
         "The Spanish J sounds similar to the English H.",
         "Stress the final syllable because José has an accent mark."
     ],
 
+    image:
+        "../images/jose-fixed.png",
+
+    imageAlt:
+        "Mateo introducing José",
+
     audioBeginner:
-        "../audio/jose.wav",
+        "../audio/s-jose.wav",
 
     audioNatural:
         "../audio/jose.wav"
@@ -49,16 +53,20 @@ const pronunciationWords = [
    {
     word: "Jaguar",
 
-    pronunciation:
-        "hah-GWAHR",
+    pronunciation: "hah-GWAHR",
 
-    meaning:
-        "Jaguar",
+    meaning: "Jaguar",
 
     soundTips: [
         "The opening J uses the same breathy sound heard in José.",
         "Pronounce the U as part of the combined 'gua' sound."
     ],
+
+    image:
+        "../images/jaguar.png",
+
+    imageAlt:
+        "A jaguar",
 
     audioBeginner:
         "../audio/s-jaguar.wav",
@@ -79,6 +87,11 @@ const pronunciationWords = [
         "Stress the first syllable."
     ],
 
+    image:
+        "../images/hola.png",
+
+    imageAlt:
+        "Someone greeting with Hola",
     audioBeginner: "../audio/s-hola.wav",
 
     audioNatural: "../audio/hola.wav"
@@ -95,6 +108,11 @@ const pronunciationWords = [
         "The H is silent.",
         "Stress the last syllable."
     ],
+    image:
+        "../images/hospital.png",
+
+    imageAlt:
+        "A hospital building",
 
     audioBeginner: "../audio/s-hospital.wav",
 
@@ -112,6 +130,11 @@ const pronunciationWords = [
         "The H is silent.",
         "Pronounce 'Hue' as 'weh'."
     ],
+    image:
+        "../images/huevos.png",
+
+    imageAlt:
+        "Eggs",
 
     audioBeginner: "../audio/s-huevos.wav",
 
@@ -129,7 +152,11 @@ const pronunciationWords = [
         "The H is completely silent.",
         "Pronounce IE as a smooth 'ee-eh' vowel combination. Do not add a separate Y or LL consonant sound."
     ],
+    image:
+        "../images/hielo.png",
 
+    imageAlt:
+        "Ice",
     audioBeginner: "../audio/s-hielo.wav",
 
     audioNatural: "../audio/hielo.wav"
@@ -146,7 +173,11 @@ const pronunciationWords = [
         "Ñ sounds like 'ny' in canyon.",
         "Stress the first syllable."
     ],
+    image:
+        "../images/nino.png",
 
+    imageAlt:
+        "A boy",
     audioBeginner: "../audio/s-nino.wav",
 
     audioNatural: "../audio/nino.wav"
@@ -164,10 +195,183 @@ const pronunciationWords = [
         "Do not pronounce it like 'ano'."
     ],
 
+    image:
+        "../images/anio.png",
+
+    imageAlt:
+        "A calendar showing a year",   
     audioBeginner: "../audio/s-ano.wav",
 
     audioNatural: "../audio/ano.wav"
+},
+{
+    word: "Español",
+
+    pronunciation: "ehs-pah-NYOL",
+
+    meaning: "Spanish",
+
+    soundTips: [
+        "Ñ sounds like 'ny' in canyon.",
+        "Stress the last syllable."
+    ],
+
+    image: "../images/espanol.png",
+
+    imageAlt: "The Spanish language",
+
+    audioBeginner: "../audio/s-espanol.wav",
+
+    audioNatural: "../audio/espanol.wav"
+},
+
+{
+    word: "Piña",
+
+    pronunciation: "PEE-nyah",
+
+    meaning: "Pineapple",
+
+    soundTips: [
+        "Ñ sounds like 'ny'.",
+        "The accent is on the first syllable."
+    ],
+
+    image: "../images/pina.png",
+
+    imageAlt: "A pineapple",
+
+    audioBeginner: "../audio/s-pina.wav",
+
+    audioNatural: "../audio/pina.wav"
+},
+
+{
+    word: "Llave",
+
+    pronunciation: "YAH-beh",
+
+    meaning: "Key",
+
+    soundTips: [
+        "LL is pronounced like the English Y in most of Latin America.",
+        "Stress the first syllable."
+    ],
+
+    image: "../images/llave.png",
+
+    imageAlt: "A key",
+
+    audioBeginner: "../audio/s-llave.wav",
+
+    audioNatural: "../audio/llave.wav"
+},
+
+{
+    word: "Perro",
+
+    pronunciation: "PEH-rroh",
+
+    meaning: "Dog",
+
+    soundTips: [
+        "RR is rolled.",
+        "Hold the tongue briefly to trill the R."
+    ],
+
+    image: "../images/perro.png",
+
+    imageAlt: "A dog",
+
+    audioBeginner: "../audio/s-perro.wav",
+
+    audioNatural: "../audio/perro.wav"
+},
+
+{
+    word: "Jalapeño",
+
+    pronunciation: "hah-lah-PEH-nyoh",
+
+    meaning: "Jalapeño pepper",
+
+    soundTips: [
+        "J sounds like the English H.",
+        "Ñ sounds like 'ny'."
+    ],
+
+    image: "../images/jalapeno.png",
+
+    imageAlt: "A jalapeño pepper",
+
+    audioBeginner: "../audio/s-jalapeno.wav",
+
+    audioNatural: "../audio/jalapeno.wav"
+},
+
+{
+    word: "Carro",
+
+    pronunciation: "KAH-rroh",
+
+    meaning: "Car",
+
+    soundTips: [
+        "RR is rolled.",
+        "Stress the first syllable."
+    ],
+
+    image: "../images/carro.png",
+
+    imageAlt: "A car",
+
+    audioBeginner: "../audio/s-carro.wav",
+
+    audioNatural: "../audio/carro.wav"
+},
+
+{
+    word: "Llorando",
+
+    pronunciation: "yoh-RAHN-doh",
+
+    meaning: "Crying",
+
+    soundTips: [
+        "LL is pronounced like the English Y in most of Latin America.",
+        "Stress the middle syllable."
+    ],
+
+    image: "../images/llorando.png",
+
+    imageAlt: "A boy crying",
+
+    audioBeginner: "../audio/s-llorando.wav",
+
+    audioNatural: "../audio/llorando.wav"
+},
+
+{
+    word: "Piñata",
+
+    pronunciation: "pee-NYAH-tah",
+
+    meaning: "Piñata",
+
+    soundTips: [
+        "Ñ sounds like 'ny'.",
+        "Stress the middle syllable."
+    ],
+
+    image: "../images/pinata.png",
+
+    imageAlt: "A colorful piñata",
+
+    audioBeginner: "../audio/s-pinata.wav",
+
+    audioNatural: "../audio/pinata.wav"
 }
+
 ];
 
 let currentPronunciationWordIndex = 0;
@@ -949,6 +1153,13 @@ function setRecordButtonState(isRecording) {
 
 function updatePronunciationWord() {
 
+    if (
+        typeof SharedAudio !== "undefined" &&
+        typeof SharedAudio.stopCurrentAudio === "function"
+    ) {
+        SharedAudio.stopCurrentAudio();
+    }
+
     const wordData =
         pronunciationWords[
             currentPronunciationWordIndex
@@ -978,9 +1189,9 @@ function updatePronunciationWord() {
         );
 
     const audioButton =
-        document.querySelector(
-            ".pronunciation-audio-button"
-        );
+    document.getElementById(
+        "practice-word-audio-button"
+    );
 
     const previousButton =
         document.getElementById(
@@ -992,6 +1203,11 @@ function updatePronunciationWord() {
             "next-practice-word"
         );
 
+        const imageElement =
+    document.getElementById(
+        "practice-word-image"
+    );
+
 
     wordElement.textContent =
         wordData.word;
@@ -1001,6 +1217,28 @@ function updatePronunciationWord() {
 
     meaningElement.textContent =
         wordData.meaning;
+
+    if (imageElement) {
+
+    if (wordData.image) {
+
+        imageElement.src =
+            wordData.image;
+
+        imageElement.alt =
+            wordData.imageAlt || wordData.word;
+
+        imageElement.hidden = false;
+
+    } else {
+
+        imageElement.removeAttribute("src");
+        imageElement.alt = "";
+        imageElement.hidden = true;
+
+    }
+
+}
 
 
     /*
@@ -1038,6 +1276,21 @@ function updatePronunciationWord() {
 
     audioButton.dataset.audioNatural =
         wordData.audioNatural;
+
+        [
+    wordData.audioBeginner,
+    wordData.audioNatural
+]
+.filter(Boolean)
+.forEach(audioSource => {
+
+    const preloadAudio =
+        new Audio(audioSource);
+
+    preloadAudio.preload = "auto";
+    preloadAudio.load();
+
+});
 
 
     /*
@@ -1098,6 +1351,7 @@ nextPracticeWordButton?.addEventListener(
     }
 );
 
+updatePronunciationWord();
 // ======================================================
 // HELPERS
 // ======================================================
