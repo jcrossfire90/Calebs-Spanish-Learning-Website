@@ -800,8 +800,13 @@ function showScores(scores) {
             <div class="sofia-feedback-header">
 
                 <div class="sofia-avatar">
-                    S
-                </div>
+
+                <img
+                src="../images/sofia-avatar.png"
+                alt="Sofía"
+                >
+
+            </div>
 
                 <div>
                     <p class="sofia-label">
