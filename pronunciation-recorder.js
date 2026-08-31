@@ -109,7 +109,7 @@ const pronunciationWords = [
         "Stress the last syllable."
     ],
     image:
-        "../images/hospital.png",
+        "../images/hospital.jpg",
 
     imageAlt:
         "A hospital building",
@@ -131,7 +131,7 @@ const pronunciationWords = [
         "Pronounce 'Hue' as 'weh'."
     ],
     image:
-        "../images/huevos.png",
+        "../images/huevos.jpg",
 
     imageAlt:
         "Eggs",
@@ -153,7 +153,7 @@ const pronunciationWords = [
         "Pronounce IE as a smooth 'ee-eh' vowel combination. Do not add a separate Y or LL consonant sound."
     ],
     image:
-        "../images/hielo.png",
+        "../images/hielo.jpg",
 
     imageAlt:
         "Ice",
@@ -196,7 +196,7 @@ const pronunciationWords = [
     ],
 
     image:
-        "../images/anio.png",
+        "../images/ano.jpg",
 
     imageAlt:
         "A calendar showing a year",   
@@ -237,7 +237,7 @@ const pronunciationWords = [
         "The accent is on the first syllable."
     ],
 
-    image: "../images/pina.png",
+    image: "../images/pina.jpg",
 
     imageAlt: "A pineapple",
 
@@ -249,7 +249,7 @@ const pronunciationWords = [
 {
     word: "Llave",
 
-    pronunciation: "YAH-beh",
+    pronunciation: "YAH-veh",
 
     meaning: "Key",
 
@@ -258,7 +258,7 @@ const pronunciationWords = [
         "Stress the first syllable."
     ],
 
-    image: "../images/llave.png",
+    image: "../images/manuel-llave.png",
 
     imageAlt: "A key",
 
@@ -279,7 +279,7 @@ const pronunciationWords = [
         "Hold the tongue briefly to trill the R."
     ],
 
-    image: "../images/perro.png",
+    image: "../images/perro2.jpg",
 
     imageAlt: "A dog",
 
@@ -300,7 +300,7 @@ const pronunciationWords = [
         "Ñ sounds like 'ny'."
     ],
 
-    image: "../images/jalapeno.png",
+    image: "../images/jalapeno.jpg",
 
     imageAlt: "A jalapeño pepper",
 
@@ -321,7 +321,7 @@ const pronunciationWords = [
         "Stress the first syllable."
     ],
 
-    image: "../images/carro.png",
+    image: "../images/carro2.jpg",
 
     imageAlt: "A car",
 
@@ -342,7 +342,7 @@ const pronunciationWords = [
         "Stress the middle syllable."
     ],
 
-    image: "../images/llorando.png",
+    image: "../images/jose-llorando2.png",
 
     imageAlt: "A boy crying",
 
@@ -363,7 +363,7 @@ const pronunciationWords = [
         "Stress the middle syllable."
     ],
 
-    image: "../images/pinata.png",
+    image: "../images/manuel-pinata.png",
 
     imageAlt: "A colorful piñata",
 

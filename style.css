@@ -1114,7 +1114,7 @@ box-shadow:0px 0px 20px black;
 
     padding: 10px 20px;
 
-    margin: 100px 0 0px;
+    margin: 0;
 
     font-size: 1.15rem;
     font-weight: bold;
@@ -1933,6 +1933,60 @@ box-shadow:0px 0px 20px black;
 }
 
 /* ========================================================
+   PRACTICE WORD CONTROLS
+======================================================== */
+
+.practice-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    margin-top: 22px;
+}
+
+.practice-controls button {
+    width: 160px;
+    min-height: 48px;
+    margin: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.practice-controls #previous-practice-word {
+    justify-self: start;
+}
+
+.practice-controls #practice-word-audio-button {
+    justify-self: center;
+}
+
+.practice-controls #next-practice-word {
+    justify-self: end;
+}
+
+@media (max-width: 650px) {
+
+    .practice-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-controls button {
+        width: 100%;
+    }
+
+    .practice-controls #previous-practice-word,
+    .practice-controls #practice-word-audio-button,
+    .practice-controls #next-practice-word {
+        justify-self: stretch;
+    }
+
+}
+
+/* ========================================================
    PRACTICE WORD IMAGE
 ======================================================== */
 
@@ -2363,5 +2417,247 @@ box-shadow:0px 0px 20px black;
         height: 180px;
         object-fit: fill;
     }
+
+}
+
+/* ================================================= */
+/* SOFIA'S CLASSROOM CHALLENGE                       */
+/* ================================================= */
+
+.challenge-introduction {
+
+    display: flex;
+    justify-content: center;
+
+    margin: -25px auto 70px;
+
+}
+
+.challenge-card {
+
+    width: min(900px, 92%);
+
+    background: rgba(255,255,255,.92);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,.45);
+
+    border-radius: 28px;
+
+    padding: 35px 45px;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.28);
+
+}
+
+.challenge-sofia {
+
+    width: 140px;
+    height: 140px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 8px solid #47d7dc;
+
+    margin-bottom: 30px;
+
+}
+
+.challenge-card h2 {
+
+    margin-bottom: 20px;
+
+    color: #073f48;
+
+    font-size: 2.3rem;
+
+}
+
+.challenge-message {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    font-size: 1.2rem;
+
+    line-height: 1.8;
+
+    color: #404040;
+
+}
+
+.challenge-information {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin: 45px 0;
+
+}
+
+.challenge-item {
+
+    min-width: 280px;
+
+    background: #cde8e6;
+
+    border: 2px solid #48cdd3;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+}
+
+.challenge-item strong {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #074a54;
+
+    font-size: 1.1rem;
+
+}
+
+.challenge-item span {
+
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    color: #0b4f57;
+
+}
+
+.start-challenge-button {
+
+    padding: 18px 50px;
+
+    font-size: 1.3rem;
+
+    font-weight: bold;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #0f8477,
+        #28b9aa
+    );
+
+    border: none;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.start-challenge-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.18);
+
+}
+
+.challenge-header {
+
+    text-align: center;
+
+    padding: 25px 20px 18px;
+
+    background: transparent;
+
+    margin-bottom: 10px;
+
+}
+/*
+Dark green banner with
+backdrop blur effect (commented out)
+.challenge-header {
+
+    text-align: center;
+
+    color: white;
+
+    padding: 18px 20px 16px;
+
+    background: rgba(7, 29, 27, 0.55);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.55);
+
+}
+*/
+.challenge-header h1 {
+
+    margin: 0;
+
+    font-size: 3.3rem;
+
+    color: #42d8d5;
+
+    text-shadow:
+        0 3px 10px rgba(0,0,0,.45);
+
+}
+
+.challenge-header p {
+
+    margin: 10px 0 0;
+
+    font-size: 1.45rem;
+
+    color: white;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.55);
+
+}
+
+/* ================================================= */
+/* CLASSROOM BACKGROUND                              */
+/* ================================================= */
+
+.classroom-background {
+
+    background:
+        linear-gradient(
+    rgba(0,0,0,.30),
+    rgba(0,0,0,.30)
+        ),
+        url("../images/classroom-background.webp");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
 }

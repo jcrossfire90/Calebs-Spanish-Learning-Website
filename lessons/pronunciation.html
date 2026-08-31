@@ -862,19 +862,7 @@ For this reason, it is important to pay attention to accent marks when reading a
 
 </div>
 
-        <button
-        id="practice-word-audio-button"
-        type="button"
-        class="pronunciation-audio-button"
-            data-audio-beginner="../audio/s-jose.wav"
-            data-audio-natural="../audio/jose.wav"
-        >
-            🔊 Listen to Native Speaker
-        </button>
-
-        <br><br>
-
-<div class="practice-word-navigation">
+        <div class="practice-controls">
 
     <button
         id="previous-practice-word"
@@ -886,13 +874,20 @@ For this reason, it is important to pay attention to accent marks when reading a
     </button>
 
     <button
+        id="practice-word-audio-button"
+        type="button"
+        class="pronunciation-audio-button"
+        data-audio-beginner="../audio/s-jose.wav"
+        data-audio-natural="../audio/jose.wav"
+    >
+        ▶ Listen
+    </button>
+
+    <button
         id="next-practice-word"
         class="practice-nav-button"
         type="button"
-
-        updatePronunciationWord();
     >
-
         Next Word →
     </button>
 

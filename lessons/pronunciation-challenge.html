@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Lesson 2 Pronunciation: Sofia's Classroom Challenge</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="classroom-background">
+
+<nav class="lesson-nav">
+
+<a href="pronunciation.html">🏠 Return to Lesson 2</a>
+
+</nav>
+
+<header class="challenge-header">
+
+    <h1>🎓 Lesson 2 Pronunciation Challenge</h1>
+
+    <p>
+        Welcome to <strong>Sofía's Classroom.</strong><br>
+        Complete today's challenge to earn your XP and unlock Lesson 3.
+    </p>
+
+</header>
+
+<!-- ====================================================== -->
+<!-- LESSON CONTENT                                         -->
+<!-- ====================================================== -->
+
+<main class="container">
+
+<section class="challenge-introduction">
+
+    <div class="challenge-card">
+
+        <img
+            src="../images/sofia-avatar.png"
+            alt="Sofía"
+            class="challenge-sofia"
+        >
+
+        <h2>
+            Welcome to Sofía's Classroom
+        </h2>
+
+        <p class="challenge-message">
+
+            Today you'll complete several pronunciation challenges.
+
+            <br><br>
+
+            Listen carefully.
+
+            Think before you answer.
+
+            Take your time.
+
+            <br><br>
+
+            At the end you'll earn XP and unlock Lesson 3.
+
+        </p>
+
+        <div class="challenge-information">
+
+            <div class="challenge-item">
+
+                <strong>🏆 Reward</strong>
+
+                <span>100 XP</span>
+
+            </div>
+
+            <div class="challenge-item">
+
+                <strong>📖 Questions</strong>
+
+                <span>10</span>
+
+            </div>
+
+            <div class="challenge-item">
+
+                <strong>🎯 Passing Score</strong>
+
+                <span>80%</span>
+
+            </div>
+
+        </div>
+
+        <button
+            id="start-challenge-button"
+            class="start-challenge-button"
+        >
+            Begin Challenge
+        </button>
+
+    </div>
+
+</section>
+
+<section
+    id="challenge-area"
+    class="challenge-area"
+    hidden
+>
+
+    <div class="challenge-progress">
+
+        <div class="challenge-progress-top">
+
+            <span id="challenge-number">
+                Question 1 of 10
+            </span>
+
+            <span id="challenge-score">
+                Score: 0
+            </span>
+
+        </div>
+
+        <div class="challenge-progress-bar">
+
+            <div
+                id="challenge-progress-fill"
+                class="challenge-progress-fill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="challenge-card"
+        class="challenge-card-body"
+    >
+
+        <!-- Questions will appear here -->
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="../shared-audio.js"></script>
+
+<script src="pronunciation-challenge.js"></script>
+
+<script>
+window.addEventListener("load", function () {
+
+    const accentExamples = [
+        {
+            wordBefore: "Jos",
+            accentLetter: "é",
+            wordAfter: "",
+            pronunciation: "ho-SEH",
+
+            correctBeginner: "../audio/s-jose.wav",
+            correctNatural: "../audio/jose.wav",
+
+            incorrectBeginner: "../audio/s-u-jose.wav",
+            incorrectNatural: "../audio/u-jose.wav"
+        },
+        {
+            wordBefore: "Mam",
+            accentLetter: "á",
+            wordAfter: "",
+            pronunciation: "mah-MAH",
+
+            correctBeginner: "../audio/s-mama.wav",
+            correctNatural: "../audio/mama.wav",
+
+            incorrectBeginner: "../audio/s-u-mama.wav",
+            incorrectNatural: "../audio/u-mama.wav"
+        },
+        {
+            wordBefore: "Tel",
+            accentLetter: "é",
+            wordAfter: "fono",
+            pronunciation: "teh-LEH-foh-noh",
+
+            correctBeginner: "../audio/s-telefono.wav",
+            correctNatural: "../audio/telefono.wav",
+
+            incorrectBeginner: "../audio/s-u-telefono.wav",
+            incorrectNatural: "../audio/u-telefono.wav"
+        },
+        {
+            wordBefore: "Pap",
+            accentLetter: "á",
+            wordAfter: "",
+            pronunciation: "pah-PAH",
+
+            correctBeginner: "../audio/s-papaa.wav",
+            correctNatural: "../audio/papaa.wav",
+
+            incorrectBeginner: "../audio/s-u-papaa.wav",
+            incorrectNatural: "../audio/u-papaa.wav"
+        }
+    ];
+
+    let currentIndex = 0;
+
+    const wordElement =
+        document.getElementById("accent-word");
+
+    const pronunciationElement =
+        document.getElementById("accent-pronunciation");
+
+    const correctAudioButton =
+        document.getElementById("accent-correct-audio");
+
+    const incorrectAudioButton =
+        document.getElementById("accent-incorrect-audio");
+
+    const previousButton =
+        document.getElementById("accent-previous");
+
+    const nextButton =
+        document.getElementById("accent-next");
+
+    const counterElement =
+        document.getElementById("accent-counter");
+
+    function updateAccentCard() {
+
+        const example = accentExamples[currentIndex];
+
+        wordElement.innerHTML =
+            example.wordBefore +
+            '<span style="color:#e00000;">' +
+            example.accentLetter +
+            "</span>" +
+            example.wordAfter;
+
+        pronunciationElement.textContent =
+            example.pronunciation;
+
+        correctAudioButton.setAttribute(
+            "data-audio-beginner",
+            example.correctBeginner
+        );
+
+        correctAudioButton.setAttribute(
+            "data-audio-natural",
+            example.correctNatural
+        );
+
+        incorrectAudioButton.setAttribute(
+            "data-audio-beginner",
+            example.incorrectBeginner
+        );
+
+        incorrectAudioButton.setAttribute(
+            "data-audio-natural",
+            example.incorrectNatural
+        );
+
+        counterElement.textContent =
+            `${currentIndex + 1} of ${accentExamples.length}`;
+
+        previousButton.disabled =
+            currentIndex === 0;
+
+        nextButton.disabled =
+            currentIndex === accentExamples.length - 1;
+    }
+
+    previousButton.onclick = function () {
+
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateAccentCard();
+        }
+    };
+
+    nextButton.onclick = function () {
+
+        if (currentIndex < accentExamples.length - 1) {
+            currentIndex++;
+            updateAccentCard();
+        }
+    };
+
+    updateAccentCard();
+});
+</script>
+
+</body>
+</html>
