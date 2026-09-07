@@ -239,11 +239,136 @@ Example:
 
 </section>
 
-<p><strong>Person A (Juan):</strong> Hola, ¿cómo estás?</p>
-<p><strong>Person B (Carlos):</strong> Bien, gracias. ¿Y tú?</p>
-<p><strong>Person A (Juan):</strong> Muy bien, gracias.</p>
-<p><strong>Person B (Carlos):</strong> Mucho gusto.</p>
-<p><strong>Person A (Juan):</strong> Igualmente. </p>
+<div
+    class="audio-conversation"
+    aria-label="Conversation between Mateo and Juan"
+>
+
+    <div class="chat-turn chat-turn-mateo">
+
+        <div class="chat-speaker">
+
+            <img
+                src="../images/Mateo/mateo-conversation-avatar.png"
+                alt="Mateo"
+            >
+
+            <span>Mateo</span>
+
+        </div>
+
+        <button
+            type="button"
+            class="chat-audio-bubble"
+            data-audio="../audio/greetings/meeting-01-mateo.wav"
+            aria-label="Play Mateo saying: Hola, ¿cómo estás?"
+        >
+            ▶ Listen
+        </button>
+
+    </div>
+
+
+    <div class="chat-turn chat-turn-juan">
+
+        <div class="chat-speaker">
+
+            <img
+                src="../images/Juan/juan-avatar.png"
+                alt="Juan"
+            >
+
+            <span>Juan</span>
+
+        </div>
+
+        <button
+            type="button"
+            class="chat-audio-bubble"
+            data-audio="../audio/greetings/meeting-02-juan.wav"
+            aria-label="Play Juan saying: Bien, gracias. ¿Y tú?"
+        >
+            ▶ Listen
+        </button>
+
+    </div>
+
+
+    <div class="chat-turn chat-turn-mateo">
+
+        <div class="chat-speaker">
+
+            <img
+                src="../images/Mateo/mateo-conversation-avatar.png"
+                alt="Mateo"
+            >
+
+            <span>Mateo</span>
+
+        </div>
+
+        <button
+            type="button"
+            class="chat-audio-bubble"
+            data-audio="../audio/greetings/meeting-03-mateo.wav"
+            aria-label="Play Mateo saying: Muy bien, gracias."
+        >
+            ▶ Listen
+        </button>
+
+    </div>
+
+
+    <div class="chat-turn chat-turn-juan">
+
+        <div class="chat-speaker">
+
+            <img
+                src="../images/Juan/juan-avatar.png"
+                alt="Juan"
+            >
+
+            <span>Juan</span>
+
+        </div>
+
+        <button
+            type="button"
+            class="chat-audio-bubble"
+            data-audio="../audio/greetings/meeting-04-juan.wav"
+            aria-label="Play Juan saying: Mucho gusto."
+        >
+            ▶ Listen
+        </button>
+
+    </div>
+
+
+    <div class="chat-turn chat-turn-mateo">
+
+        <div class="chat-speaker">
+
+            <img
+                src="../images/Mateo/mateo-conversation-avatar.png"
+                alt="Mateo"
+            >
+
+            <span>Mateo</span>
+
+        </div>
+
+        <button
+            type="button"
+            class="chat-audio-bubble"
+            data-audio="../audio/greetings/meeting-05-mateo.wav"
+            aria-label="Play Mateo saying: Igualmente."
+        >
+            ▶ Listen
+        </button>
+
+    </div>
+
+</div>
 
 </section>
 
@@ -598,3 +723,8 @@ else {
 }
 
 </script>
+
+<script src="../shared-audio.js"></script>
+
+</body>
+</html>
